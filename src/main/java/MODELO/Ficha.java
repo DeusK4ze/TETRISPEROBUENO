@@ -6,7 +6,9 @@ package MODELO;
 
 /**
  *
- * @author a22hugorp
+ * @author a22anxoll
+ * 
+ * ESTA PARTE IRÁ A RAMA MASTER , EDITADA POR ANXO
  */
 public abstract class Ficha {
 
