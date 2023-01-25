@@ -7,19 +7,17 @@ package MODELO;
 /**
  *
  * @author a22anxoll
- * 
- * ESTA PARTE IRÁ A RAMA MASTER , EDITADA POR ANXO
  */
-public abstract class Ficha {
+public abstract class Ficha{
 
     moverFichaDereita() {
+        
     }
 
     moverFichaEsquerda() {
     }
 
     moverFichaAbaixo() {
-
     }
 
     rotarFicha() {
