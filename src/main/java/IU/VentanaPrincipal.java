@@ -1,4 +1,4 @@
-package com.mycompany.tetris;
+package IU;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
