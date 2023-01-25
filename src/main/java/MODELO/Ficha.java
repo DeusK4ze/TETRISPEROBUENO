@@ -8,6 +8,18 @@ package MODELO;
  *
  * @author a22hugorp
  */
-public class Ficha {
-    
+public abstract class Ficha {
+
+    moverFichaDereita() {
+    }
+
+    moverFichaEsquerda() {
+    }
+
+    moverFichaAbaixo() {
+
+    }
+
+    rotarFicha() {
+    }
 }
