@@ -4,10 +4,19 @@
  */
 package MODELO;
 
+import java.awt.Color;
+
 /**
  *
  * @author a22hugorp
  */
 public class Cadrado {
+    public int x;
+    public int y;
+    public Color corRecheo = Color.MAGENTA;
+    public  lblCadrado = jLabel;
     
+    public String getCoordenadas(){
+        
+    }
 }

@@ -10,16 +10,16 @@ package MODELO;
  */
 public abstract class Ficha{
 
-    moverFichaDereita() {
+    public void moverFichaDereita() {
         
     }
 
-    moverFichaEsquerda() {
+    public void moverFichaEsquerda() {
     }
 
-    moverFichaAbaixo() {
+    public void moverFichaAbaixo() {
     }
 
-    rotarFicha() {
+    public void rotarFicha() {
     }
 }
