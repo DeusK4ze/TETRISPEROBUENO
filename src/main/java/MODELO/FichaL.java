@@ -6,25 +6,14 @@ package MODELO;
 
 /**
  *
- * @author a22anxoll
+ * @author thicc
  */
-public class Ficha{
+public class FichaL extends Ficha{
 
-       public Ficha() {
+    public FichaL() {
     }
     
-    public boolean moverDereita(){
-       
-    }
-    
-    public boolean moverEsquerda(){
-          
-    }
-    
-    public boolean moverAbaixo(){
-        
-    }
-    
+    @Override
     public boolean rotar(){
         
     }
