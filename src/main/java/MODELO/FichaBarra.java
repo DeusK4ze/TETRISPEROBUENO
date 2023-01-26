@@ -4,20 +4,17 @@
  */
 package MODELO;
 
-import java.awt.Color;
-import javax.swing.JLabel;
-
 /**
  *
- * @author a22hugorp
+ * @author thicc
  */
-public class Cadrado {
-    public int x;
-    public int y;
-    public Color colorRecheo;
-    public JLabel lblCadrado;
+public class FichaBarra extends Ficha {
 
-    public String getCoordenadas() {
+    public FichaBarra() {
+    }
+
+    @Override
+    public boolean rotar() {
 
     }
 }
