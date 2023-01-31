@@ -7,15 +7,16 @@ package IU;
 
 /**
  *
- * @author a22hugorp
+ * @author thicc
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     /**
-     * Creates new form VentanaPrincipal
+     * Creates new form Tetris
      */
     public VentanaPrincipal() {
         initComponents();
+        panelPausa.setVisible(false);
     }
 
     /**
@@ -27,23 +28,233 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelXogo = new javax.swing.JPanel();
+        panelPausa = new javax.swing.JPanel();
+        bReanudar = new javax.swing.JButton();
+        bSalir = new javax.swing.JButton();
+        bPausar = new javax.swing.JButton();
+        panelPuntos = new javax.swing.JPanel();
+        lPuntuacion = new javax.swing.JTextField();
+        panelTempo = new javax.swing.JPanel();
+        labelTiempo = new javax.swing.JLabel();
+        panelNextFicha = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 0, 0));
-        setPreferredSize(new java.awt.Dimension(800, 800));
+        setBounds(new java.awt.Rectangle(0, 0, 900, 900));
+        setMaximizedBounds(new java.awt.Rectangle(0, 0, 900, 900));
+        setMaximumSize(new java.awt.Dimension(900, 900));
+        setMinimumSize(new java.awt.Dimension(900, 900));
+        setResizable(false);
+
+        panelXogo.setBackground(new java.awt.Color(0, 0, 0));
+        panelXogo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.white, java.awt.Color.darkGray, java.awt.Color.lightGray));
+        panelXogo.setPreferredSize(new java.awt.Dimension(500, 700));
+
+        panelPausa.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelPausa.setMinimumSize(new java.awt.Dimension(300, 300));
+
+        bReanudar.setText("Reanudar");
+        bReanudar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bReanudarMouseClicked(evt);
+            }
+        });
+
+        bSalir.setText("Salir");
+        bSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bSalirMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelPausaLayout = new javax.swing.GroupLayout(panelPausa);
+        panelPausa.setLayout(panelPausaLayout);
+        panelPausaLayout.setHorizontalGroup(
+            panelPausaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPausaLayout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addGroup(panelPausaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bReanudar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
+        );
+        panelPausaLayout.setVerticalGroup(
+            panelPausaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPausaLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(bReanudar)
+                .addGap(28, 28, 28)
+                .addComponent(bSalir)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panelXogoLayout = new javax.swing.GroupLayout(panelXogo);
+        panelXogo.setLayout(panelXogoLayout);
+        panelXogoLayout.setHorizontalGroup(
+            panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelXogoLayout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(panelPausa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(101, Short.MAX_VALUE))
+        );
+        panelXogoLayout.setVerticalGroup(
+            panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelXogoLayout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(panelPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(420, Short.MAX_VALUE))
+        );
+
+        bPausar.setText("Pausar");
+        bPausar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bPausarMouseClicked(evt);
+            }
+        });
+        bPausar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bPausarActionPerformed(evt);
+            }
+        });
+        bPausar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                bPausarKeyPressed(evt);
+            }
+        });
+
+        panelPuntos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        lPuntuacion.setText("Puntuacion");
+
+        javax.swing.GroupLayout panelPuntosLayout = new javax.swing.GroupLayout(panelPuntos);
+        panelPuntos.setLayout(panelPuntosLayout);
+        panelPuntosLayout.setHorizontalGroup(
+            panelPuntosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPuntosLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(lPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+        panelPuntosLayout.setVerticalGroup(
+            panelPuntosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPuntosLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(lPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+
+        panelTempo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        labelTiempo.setText("TIEMPO");
+
+        javax.swing.GroupLayout panelTempoLayout = new javax.swing.GroupLayout(panelTempo);
+        panelTempo.setLayout(panelTempoLayout);
+        panelTempoLayout.setHorizontalGroup(
+            panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTempoLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(labelTiempo)
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+        panelTempoLayout.setVerticalGroup(
+            panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTempoLayout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(labelTiempo)
+                .addGap(41, 41, 41))
+        );
+
+        panelNextFicha.setBackground(new java.awt.Color(0, 0, 0));
+        panelNextFicha.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+
+        javax.swing.GroupLayout panelNextFichaLayout = new javax.swing.GroupLayout(panelNextFicha);
+        panelNextFicha.setLayout(panelNextFichaLayout);
+        panelNextFichaLayout.setHorizontalGroup(
+            panelNextFichaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 221, Short.MAX_VALUE)
+        );
+        panelNextFichaLayout.setVerticalGroup(
+            panelNextFichaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 289, Short.MAX_VALUE)
+        );
+
+        jLabel2.setText("PRÓXIMA FICHA");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 427, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bPausar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelXogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(panelTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(panelPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(panelNextFicha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(jLabel2)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelXogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bPausar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66)
+                        .addComponent(panelTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelNextFicha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bPausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPausarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bPausarActionPerformed
+
+    private void bPausarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bPausarMouseClicked
+        // TODO add your handling code here:
+        panelPausa.setVisible(true);
+        panelXogo.setEnabled(false);
+        panelPausa.setEnabled(true);
+    }//GEN-LAST:event_bPausarMouseClicked
+
+    private void bReanudarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bReanudarMouseClicked
+        // TODO add your handling code here:
+        panelPausa.setVisible(false);
+        panelPausa.setEnabled(false);
+        panelXogo.setEnabled(true);
+    }//GEN-LAST:event_bReanudarMouseClicked
+
+    private void bSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bSalirMouseClicked
+        // TODO add your handling code here:
+        panelPausa.setVisible(false);
+        panelPausa.setEnabled(false);
+        
+        
+    }//GEN-LAST:event_bSalirMouseClicked
+
+    private void bPausarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bPausarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bPausarKeyPressed
 
     /**
      * @param args the command line arguments
@@ -62,18 +273,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tetris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tetris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tetris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tetris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VentanaPrincipal().setVisible(true);
             }
@@ -81,5 +293,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bPausar;
+    private javax.swing.JButton bReanudar;
+    private javax.swing.JButton bSalir;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField lPuntuacion;
+    private javax.swing.JLabel labelTiempo;
+    private javax.swing.JPanel panelNextFicha;
+    private javax.swing.JPanel panelPausa;
+    private javax.swing.JPanel panelPuntos;
+    private javax.swing.JPanel panelTempo;
+    private javax.swing.JPanel panelXogo;
     // End of variables declaration//GEN-END:variables
 }
