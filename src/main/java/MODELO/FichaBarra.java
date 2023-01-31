@@ -12,7 +12,7 @@ public class FichaBarra extends Ficha {
 
     public FichaBarra() {
     }
-
+    
     @Override
     public boolean rotar() {
 

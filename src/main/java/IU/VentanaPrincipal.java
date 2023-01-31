@@ -1,5 +1,7 @@
 package IU;
 
+import javax.swing.JLabel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -18,7 +20,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         panelPausa.setVisible(false);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,6 +34,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelPausa = new javax.swing.JPanel();
         bReanudar = new javax.swing.JButton();
         bSalir = new javax.swing.JButton();
+        lblCadrado = new javax.swing.JLabel();
         bPausar = new javax.swing.JButton();
         panelPuntos = new javax.swing.JPanel();
         lPuntuacion = new javax.swing.JTextField();
@@ -89,19 +92,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        lblCadrado.setText("jLabel1");
+
         javax.swing.GroupLayout panelXogoLayout = new javax.swing.GroupLayout(panelXogo);
         panelXogo.setLayout(panelXogoLayout);
         panelXogoLayout.setHorizontalGroup(
             panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelXogoLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(panelPausa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelXogoLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(panelPausa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelXogoLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(lblCadrado)))
                 .addContainerGap(101, Short.MAX_VALUE))
         );
         panelXogoLayout.setVerticalGroup(
             panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelXogoLayout.createSequentialGroup()
-                .addGap(99, 99, 99)
+                .addGap(26, 26, 26)
+                .addComponent(lblCadrado)
+                .addGap(57, 57, 57)
                 .addComponent(panelPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(420, Short.MAX_VALUE))
         );
@@ -256,6 +268,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bPausarKeyPressed
 
+    
+    public void pintarCadado(JLabel lblCadrado){
+        lblCadrado.setBackground(corRecheo);
+    }
+    
+    public void borrarCadrado(JLabel lblCadrado){
+        
+    }
+    
+    public void mostrarNumeroLinas(int numeroLinas){
+        
+    }
+    
+    public void mostrarFinDoXogo(){
+        
+    }
+    
+    private void iniciarPartida(){
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -299,6 +332,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField lPuntuacion;
     private javax.swing.JLabel labelTiempo;
+    private javax.swing.JLabel lblCadrado;
     private javax.swing.JPanel panelNextFicha;
     private javax.swing.JPanel panelPausa;
     private javax.swing.JPanel panelPuntos;

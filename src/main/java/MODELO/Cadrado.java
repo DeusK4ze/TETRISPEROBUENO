@@ -15,8 +15,19 @@ public class Cadrado {
     public int x;
     public int y;
     public Color corRecheo;
-    public JLabel lblCadrado;
+    public JLabel lblCadrado = new JLabel();
 
+    public Cadrado(int x, int y, Color corRecheo) {
+        this.x = x;
+        this.y = y;
+        this.corRecheo = corRecheo;
+        
+        lblCadrado.setBackground(corRecheo);
+        lblCadrado.setLocation(x, y);
+    }
+    
+    
+    
     public int getX() {
         return x;
     }
@@ -34,7 +45,7 @@ public class Cadrado {
     }
     
     public String getCoordenadas(){
-        String coordenadas = "" + this.x + "" + this.y;
+        String coordenadas = "" + this.x + this.y;
         return coordenadas;
     } 
 }

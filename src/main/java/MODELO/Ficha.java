@@ -4,12 +4,15 @@
  */
 package MODELO;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author a22anxoll
  */
 public abstract class Ficha{
-
+    ArrayList<Cadrado> cadrados = new ArrayList<>();
+    iterat
     public boolean moverFichaDereita() {
         boolean mover = false;
         return mover;
