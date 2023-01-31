@@ -43,8 +43,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 900, 900));
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 900, 900));
-        setMaximumSize(new java.awt.Dimension(900, 900));
-        setMinimumSize(new java.awt.Dimension(900, 900));
+        setMaximumSize(new java.awt.Dimension(900, 800));
+        setMinimumSize(new java.awt.Dimension(900, 800));
         setResizable(false);
 
         panelXogo.setBackground(new java.awt.Color(0, 0, 0));

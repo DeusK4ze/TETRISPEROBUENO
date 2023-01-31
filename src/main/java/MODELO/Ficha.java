@@ -25,6 +25,5 @@ public abstract class Ficha{
         return mover;
     }
 
-    public boolean rotarFicha() {
-    }
+    public abstract boolean rotarFicha();
 }

@@ -10,10 +10,10 @@
       <Rectangle value="[0, 0, 900, 900]"/>
     </Property>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[900, 900]"/>
+      <Dimension value="[900, 800]"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[900, 900]"/>
+      <Dimension value="[900, 800]"/>
     </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
