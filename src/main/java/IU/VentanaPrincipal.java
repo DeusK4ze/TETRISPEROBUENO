@@ -1,6 +1,7 @@
 package IU;
 
 import javax.swing.JLabel;
+import javax.swing.Timer;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -16,6 +17,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form Tetris
      */
+    
+    int segundos;
+    int minutos;
+    boolean pausa;
+    
+    Timer time = new Timer();
+    
+    speedGame = new TimerTask(){
+        public void run(){
+            boolean flag = false;
+        }
+    }
+    
+
+    
     public VentanaPrincipal() {
         initComponents();
         panelPausa.setVisible(false);

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public abstract class Ficha{
     ArrayList<Cadrado> cadrados = new ArrayList<>();
-    iterat
+    iterator<cadrados>
     public boolean moverFichaDereita() {
         boolean mover = false;
         return mover;
