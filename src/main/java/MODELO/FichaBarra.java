@@ -5,15 +5,16 @@
 package MODELO;
 
 import java.awt.Color;
+import java.util.Iterator;
 
 /**
  *
  * @author thicc
  */
 public class FichaBarra extends Ficha {
-
+    Iterator<Cadrado> = new Iterator() {};
     public FichaBarra() {
-        for (int i = 0; i < super.cadrados.size(); i++) {
+        
             super.cadrados.get(i).corRecheo=Color.YELLOW;
             super.cadrados.get(i).getX();
             super.cadrados.get(i).getY();
