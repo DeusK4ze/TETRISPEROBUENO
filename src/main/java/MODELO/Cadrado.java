@@ -22,10 +22,12 @@ public class Cadrado {
         this.y = y;
         this.corRecheo = corRecheo;
         
-        lblCadrado.setBackground(corRecheo);
-        lblCadrado.setLocation(x, y);
+        
     }
     
+    public Cadrado(){
+        
+    }
     
     
     public int getX() {

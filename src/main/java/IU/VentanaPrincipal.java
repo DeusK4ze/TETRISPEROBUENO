@@ -1,7 +1,7 @@
 package IU;
 
 import javax.swing.JLabel;
-import javax.swing.Timer;
+import static javax.swing.SwingConstants.TOP;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -22,19 +22,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     int minutos;
     boolean pausa;
     
-    Timer time = new Timer();
+  
     
-    speedGame = new TimerTask(){
-        public void run(){
-            boolean flag = false;
-        }
-    }
+//    Timer time = new Timer(1000, ActionListener());
+//    time = new TimerTask(){
+//        @Override
+//        public void run(){
+//            boolean flag = false;
+//        }
+//    }
     
 
     
     public VentanaPrincipal() {
         initComponents();
-        panelPausa.setVisible(false);
+        
     }
     
     /**
@@ -47,13 +49,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         panelXogo = new javax.swing.JPanel();
-        panelPausa = new javax.swing.JPanel();
-        bReanudar = new javax.swing.JButton();
-        bSalir = new javax.swing.JButton();
         lblCadrado = new javax.swing.JLabel();
         bPausar = new javax.swing.JButton();
         panelPuntos = new javax.swing.JPanel();
-        lPuntuacion = new javax.swing.JTextField();
+        lblPuntos = new javax.swing.JLabel();
         panelTempo = new javax.swing.JPanel();
         labelTiempo = new javax.swing.JLabel();
         panelNextFicha = new javax.swing.JPanel();
@@ -65,48 +64,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(900, 800));
         setMinimumSize(new java.awt.Dimension(900, 800));
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelXogo.setBackground(new java.awt.Color(0, 0, 0));
         panelXogo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.white, java.awt.Color.darkGray, java.awt.Color.lightGray));
         panelXogo.setPreferredSize(new java.awt.Dimension(500, 700));
-
-        panelPausa.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        panelPausa.setMinimumSize(new java.awt.Dimension(300, 300));
-
-        bReanudar.setText("Reanudar");
-        bReanudar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bReanudarMouseClicked(evt);
-            }
-        });
-
-        bSalir.setText("Salir");
-        bSalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bSalirMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelPausaLayout = new javax.swing.GroupLayout(panelPausa);
-        panelPausa.setLayout(panelPausaLayout);
-        panelPausaLayout.setHorizontalGroup(
-            panelPausaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPausaLayout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addGroup(panelPausaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bReanudar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(108, Short.MAX_VALUE))
-        );
-        panelPausaLayout.setVerticalGroup(
-            panelPausaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPausaLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(bReanudar)
-                .addGap(28, 28, 28)
-                .addComponent(bSalir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         lblCadrado.setText("jLabel1");
 
@@ -115,24 +77,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelXogoLayout.setHorizontalGroup(
             panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelXogoLayout.createSequentialGroup()
-                .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelXogoLayout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(panelPausa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelXogoLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(lblCadrado)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(lblCadrado)
+                .addContainerGap(420, Short.MAX_VALUE))
         );
         panelXogoLayout.setVerticalGroup(
             panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelXogoLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(lblCadrado)
-                .addGap(57, 57, 57)
-                .addComponent(panelPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(420, Short.MAX_VALUE))
+                .addContainerGap(654, Short.MAX_VALUE))
         );
+
+        getContentPane().add(panelXogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 6, -1, -1));
 
         bPausar.setText("Pausar");
         bPausar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -150,27 +107,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 bPausarKeyPressed(evt);
             }
         });
+        getContentPane().add(bPausar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         panelPuntos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lPuntuacion.setText("Puntuacion");
+        lblPuntos.setText("PUNTUACIÓN");
 
         javax.swing.GroupLayout panelPuntosLayout = new javax.swing.GroupLayout(panelPuntos);
         panelPuntos.setLayout(panelPuntosLayout);
         panelPuntosLayout.setHorizontalGroup(
             panelPuntosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPuntosLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(lPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGap(61, 61, 61)
+                .addComponent(lblPuntos)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         panelPuntosLayout.setVerticalGroup(
             panelPuntosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPuntosLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(lPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblPuntos)
+                .addContainerGap(92, Short.MAX_VALUE))
         );
+
+        getContentPane().add(panelPuntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(651, 6, -1, -1));
 
         panelTempo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -193,6 +153,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(41, 41, 41))
         );
 
+        getContentPane().add(panelTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(686, 190, -1, -1));
+
         panelNextFicha.setBackground(new java.awt.Color(0, 0, 0));
         panelNextFicha.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
 
@@ -207,49 +169,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGap(0, 289, Short.MAX_VALUE)
         );
 
-        jLabel2.setText("PRÓXIMA FICHA");
+        getContentPane().add(panelNextFicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(624, 356, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bPausar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelXogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(panelTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(panelPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(panelNextFicha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jLabel2)))
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelXogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bPausar)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
-                        .addComponent(panelTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelNextFicha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel2.setText("PRÓXIMA FICHA");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(694, 334, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -259,26 +182,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_bPausarActionPerformed
 
     private void bPausarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bPausarMouseClicked
-        // TODO add your handling code here:
-        panelPausa.setVisible(true);
-        panelXogo.setEnabled(false);
-        panelPausa.setEnabled(true);
+
     }//GEN-LAST:event_bPausarMouseClicked
-
-    private void bReanudarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bReanudarMouseClicked
-        // TODO add your handling code here:
-        panelPausa.setVisible(false);
-        panelPausa.setEnabled(false);
-        panelXogo.setEnabled(true);
-    }//GEN-LAST:event_bReanudarMouseClicked
-
-    private void bSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bSalirMouseClicked
-        // TODO add your handling code here:
-        panelPausa.setVisible(false);
-        panelPausa.setEnabled(false);
-        
-        
-    }//GEN-LAST:event_bSalirMouseClicked
 
     private void bPausarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bPausarKeyPressed
         // TODO add your handling code here:
@@ -286,7 +191,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     
     public void pintarCadado(JLabel lblCadrado){
-        lblCadrado.setBackground(corRecheo);
+        lblCadrado.getIcon();
+        lblCadrado.setLocation(TOP,TOP);
+        lblCadrado.setVerticalAlignment(TOP);
     }
     
     public void borrarCadrado(JLabel lblCadrado){
@@ -301,9 +208,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
     }
     
-    private void iniciarPartida(){
-        
-    }
+//    private void iniciarPartida(){
+//        time.start();
+//    }
     
     /**
      * @param args the command line arguments
@@ -343,14 +250,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bPausar;
-    private javax.swing.JButton bReanudar;
-    private javax.swing.JButton bSalir;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField lPuntuacion;
     private javax.swing.JLabel labelTiempo;
     private javax.swing.JLabel lblCadrado;
+    private javax.swing.JLabel lblPuntos;
     private javax.swing.JPanel panelNextFicha;
-    private javax.swing.JPanel panelPausa;
     private javax.swing.JPanel panelPuntos;
     private javax.swing.JPanel panelTempo;
     private javax.swing.JPanel panelXogo;

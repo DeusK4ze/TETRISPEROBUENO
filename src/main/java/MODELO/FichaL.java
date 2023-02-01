@@ -14,7 +14,7 @@ public class FichaL extends Ficha{
     }
     
     @Override
-    public boolean rotar(){
+    public boolean rotarFicha(){
         
     }
 }
