@@ -11,9 +11,9 @@ import java.util.ArrayList;
  * @author a22anxoll
  */
 public abstract class Ficha {
-
+    
     ArrayList<Cadrado> cadrados = new ArrayList<>();
-
+    int posicion;
     public Ficha() {
 
         Cadrado c1 = new Cadrado();

@@ -21,8 +21,10 @@ public class Cadrado {
         this.x = x;
         this.y = y;
         this.corRecheo = corRecheo;
-        
-        
+        lblCadrado.setBackground(corRecheo);
+        lblCadrado.setBounds(x, y, y, y);
+        lblCadrado.setOpaque(true);
+        lblCadrado.setVisible(true);
     }
     
     public Cadrado(){

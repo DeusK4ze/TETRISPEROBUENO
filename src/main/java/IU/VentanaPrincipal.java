@@ -79,6 +79,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         bPausar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        bSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 900, 900));
@@ -171,7 +172,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel2.setText("PRÓXIMA FICHA");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, -1, -1));
 
-        bPausar.setText("Pausar");
+        bPausar.setText("PAUSA");
         bPausar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bPausarMouseClicked(evt);
@@ -192,15 +193,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 200));
 
+        bSalir.setText("SALIR");
+        bSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 196, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(bSalir)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 196, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(bSalir)
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 540, -1, -1));
@@ -218,7 +232,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void bPausarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bPausarKeyPressed
         // TODO add your handling code here:
+        VentanaPrincipal.;
     }//GEN-LAST:event_bPausarKeyPressed
+
+    private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bSalirActionPerformed
 
     public void pintarCadado(JLabel lblCadrado) {
 
@@ -277,6 +296,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bPausar;
+    private javax.swing.JButton bSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
