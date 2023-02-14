@@ -4,7 +4,7 @@
  */
 package MODELO;
 
-import java.util.Iterator;
+import static java.awt.Color.yellow;
 
 /**
  *
@@ -12,26 +12,23 @@ import java.util.Iterator;
  */
 public class FichaBarra extends Ficha {
 
-    Iterator<Cadrado> it = cadrados.iterator();
+    public Cadrado c1 = new Cadrado(150, 50, yellow);
+    public Cadrado c2 = new Cadrado(150, 50, yellow);
+    public Cadrado c3 = new Cadrado(150, 50, yellow);
+    public Cadrado c4 = new Cadrado(150, 50, yellow);
+    
+    public FichaBarra() {
+        cadrados.add(c1);
+        cadrados.add(c2);
+        cadrados.add(c3);
+        cadrados.add(c4);
+    }
     int x = super.cadrados.get(0).getX();
     int y = super.cadrados.get(0).getY();
 
-    public Cadrado c1 = new Cadrado();
-    public Cadrado c2 = new Cadrado();
-    public Cadrado c3 = new Cadrado();
-    public Cadrado c4 = new Cadrado();
-
-    public FichaBarra() {
-        cadrados.add(c1);
-        cadrados.add(c1);
-        cadrados.add(c1);
-        cadrados.add(c1);
-    }
-
-    @Override
-
-    public boolean rotarFicha() {
+@Override
+public boolean rotarFicha() {
 
     }
 }
-}
+

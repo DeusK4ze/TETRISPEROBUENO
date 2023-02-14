@@ -11,22 +11,12 @@ import java.util.ArrayList;
  * @author a22anxoll
  */
 public abstract class Ficha {
-    
+
     ArrayList<Cadrado> cadrados = new ArrayList<>();
     int posicion;
     public Ficha() {
 
-        Cadrado c1 = new Cadrado();
-        cadrados.add(c1);
-
-        Cadrado c2 = new Cadrado();
-        cadrados.add(c2);
-
-        Cadrado c3 = new Cadrado();
-        cadrados.add(c3);
-
-        Cadrado c4 = new Cadrado();
-        cadrados.add(c4);
+        
     }
 
     public boolean moverFichaDereita() {

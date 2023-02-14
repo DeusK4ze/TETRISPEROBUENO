@@ -15,16 +15,11 @@ public class FichaCadrada extends Ficha{
     int x = super.cadrados.get(0).getX();
     int y = super.cadrados.get(0).getY();
 
-    public Cadrado c1 = new Cadrado();
-    public Cadrado c2 = new Cadrado();
-    public Cadrado c3 = new Cadrado();
-    public Cadrado c4 = new Cadrado();
-
     public FichaCadrada() {
-        cadrados.add(c1);
-        cadrados.add(c1);
-        cadrados.add(c1);
-        cadrados.add(c1);
+        cadrados.get(it.next());
+        cadrados.get(it.next());
+        cadrados.get(it.next());
+        cadrados.get(c1);
     }
     
     @Override

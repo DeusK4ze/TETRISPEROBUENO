@@ -21,6 +21,7 @@ public class Cadrado {
         this.x = x;
         this.y = y;
         this.corRecheo = corRecheo;
+
         lblCadrado.setBackground(corRecheo);
         lblCadrado.setBounds(x, y, y, y);
         lblCadrado.setOpaque(true);
@@ -31,6 +32,7 @@ public class Cadrado {
         
     }
     
+
     
     public int getX() {
         return x;
@@ -49,7 +51,6 @@ public class Cadrado {
     }
     
     public String getCoordenadas(){
-        String coordenadas = "" + this.x + this.y;
-        return coordenadas;
+        return x + "" + y;
     } 
 }
