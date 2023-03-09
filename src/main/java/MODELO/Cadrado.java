@@ -12,6 +12,8 @@ import javax.swing.JLabel;
  * @author a22hugorp
  */
 public class Cadrado {
+
+    public final int LADOCADRADO = 50;
     public int x;
     public int y;
     public Color corRecheo;
@@ -21,19 +23,34 @@ public class Cadrado {
         this.x = x;
         this.y = y;
         this.corRecheo = corRecheo;
-
+        lblCadrado = new JLabel();
+        lblCadrado.setLocation(x, y);
         lblCadrado.setBackground(corRecheo);
-        lblCadrado.setBounds(x, y, y, y);
+        lblCadrado.setBounds(x, y, LADOCADRADO, LADOCADRADO);
         lblCadrado.setOpaque(true);
         lblCadrado.setVisible(true);
     }
-    
-    public Cadrado(){
-        
-    }
-    
 
-    
+    public void setCorRecheo(Color corRecheo) {
+        this.corRecheo = corRecheo;
+    }
+
+    public void setLblCadrado(JLabel lblCadrado) {
+        this.lblCadrado = lblCadrado;
+    }
+
+    public Color getCorRecheo() {
+        return corRecheo;
+    }
+
+    public JLabel getLblCadrado() {
+        return lblCadrado;
+    }
+
+    public Cadrado() {
+
+    }
+
     public int getX() {
         return x;
     }
@@ -49,8 +66,8 @@ public class Cadrado {
     public void setY(int y) {
         this.y = y;
     }
-    
-    public String getCoordenadas(){
-        return x + "" + y;
-    } 
+
+    public String getCoordenadas() {
+        return x + " ; " + y;
+    }
 }
