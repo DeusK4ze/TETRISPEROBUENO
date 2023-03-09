@@ -4,26 +4,29 @@
  */
 package MODELO;
 
-import java.util.Iterator;
+import java.awt.Color;
 
 /**
  *
  * @author thicc
  */
-public class FichaCadrada extends Ficha{
-    Iterator<Cadrado> it = cadrados.iterator();
-    int x = super.cadrados.get(0).getX();
-    int y = super.cadrados.get(0).getY();
+public class FichaCadrada extends Ficha {
 
-    public FichaCadrada() {
-        cadrados.get(it.next());
-        cadrados.get(it.next());
-        cadrados.get(it.next());
-        cadrados.get(c1);
+    Cadrado c1 = new Cadrado(100, -50, Color.GREEN);
+    Cadrado c2 = new Cadrado(150, -50, Color.GREEN);
+    Cadrado c3 = new Cadrado(150, 0, Color.GREEN);
+    Cadrado c4 = new Cadrado(100, 0, Color.GREEN);
+
+    public FichaCadrada(Xogo xogo) {
+        super(xogo);
+        cadrados.add(c1);
+        cadrados.add(c2);
+        cadrados.add(c3);
+        cadrados.add(c4);
     }
-    
+
     @Override
-    public boolean rotarFicha(){
-        
+    public boolean rotar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

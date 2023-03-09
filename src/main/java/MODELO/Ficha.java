@@ -5,6 +5,7 @@
 package MODELO;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -12,27 +13,48 @@ import java.util.ArrayList;
  */
 public abstract class Ficha {
 
-    ArrayList<Cadrado> cadrados = new ArrayList<>();
-    int posicion;
-    public Ficha() {
+    public ArrayList<Cadrado> cadrados = new ArrayList();
+    private Iterator<Cadrado> iterCadrados;
+    public Xogo xogo;
 
-        
+    public Ficha(Xogo xogo) {
+        this.xogo = xogo;
     }
 
-    public boolean moverFichaDereita() {
-        boolean mover = false;
+    public boolean moverDereita() {
+        boolean mover = true;
+        Iterator<Cadrado> iter = cadrados.iterator();
+        while (iter.hasNext()) {
+            Cadrado cmover = iter.next();
+            if (cmover.lblCadrado.x == xogo.MAX_X) {
+                mover = false;
+            }
+        }
         return mover;
     }
 
-    public boolean moverFichaEsquerda() {
-        boolean mover = false;
+    public boolean moverEsquerda() {
+        boolean mover = true;
+        Iterator<Cadrado> iter = cadrados.iterator();
+        while (iter.hasNext()) {
+            Cadrado cmover = iter.next();
+            if (cmover.x == 0) {
+                mover = false;
+            }
+        }
         return mover;
     }
 
-    public boolean moverFichaAbaixo() {
-        boolean mover = false;
-        return mover;
+    public boolean moverAbaixo() {
+        Iterator<Cadrado> iter = cadrados.iterator();
+        while (iter.hasNext()) {
+            Cadrado cmover = iter.next();
+            cmover.lblCadrado.setLocation(cmover.x, cmover.y + xogo.LADOCADRADO);
+            cmover.y += xogo.LADOCADRADO;
+            System.out.print(cmover.x + "" + "" + cmover.y);
+        }
+        return true;
     }
 
-    public abstract boolean rotarFicha();
+    public abstract boolean rotar();
 }
