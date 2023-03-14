@@ -14,7 +14,6 @@ import java.util.Iterator;
  */
 public class Xogo {
 
-    // dimensions of the board
     public final int LADOCADRADO = 50;
     public int MAX_X = 500;
     public int MAX_Y = 710;
@@ -55,8 +54,9 @@ public class Xogo {
     }
 
     public void rotarFicha() {
+       if( ePosicionValida(MAX_X, MAX_Y)){
         fichaActual.rotar();
-        actualizarGraf();
+        actualizarGraf();}
     }
 
     public boolean ePosicionValida(int x, int y) {
@@ -77,9 +77,7 @@ public class Xogo {
         while (its.hasNext()) {
 
             Cadrado c = its.next();
-            System.out.println(c.getLblCadrado().getHorizontalAlignment());
             ventanaPrincipal.pintarCadrado(c.getLblCadrado());
-            System.out.println("Hola");
         }
     }
 
@@ -133,7 +131,6 @@ public class Xogo {
                 chocaCoChan = true;
             }
         }
-
         return chocaCoChan;
     }
 

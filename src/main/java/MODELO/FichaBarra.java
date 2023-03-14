@@ -65,6 +65,5 @@ public class FichaBarra extends Ficha {
             posicion = 0;
         }
         return rotar;
-
     }
 }

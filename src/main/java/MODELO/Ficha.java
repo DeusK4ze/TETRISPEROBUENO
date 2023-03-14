@@ -26,7 +26,7 @@ public abstract class Ficha {
         Iterator<Cadrado> iter = cadrados.iterator();
         while (iter.hasNext()) {
             Cadrado cmover = iter.next();
-            if (cmover.lblCadrado.x == xogo.MAX_X) {
+            if (cmover.lblCadrado.getX() == xogo.MAX_X) {
                 mover = false;
             }
         }
@@ -51,7 +51,7 @@ public abstract class Ficha {
             Cadrado cmover = iter.next();
             cmover.lblCadrado.setLocation(cmover.x, cmover.y + xogo.LADOCADRADO);
             cmover.y += xogo.LADOCADRADO;
-            System.out.print(cmover.x + "" + "" + cmover.y);
+            System.out.println(cmover.x + "" + "" + cmover.y);
         }
         return true;
     }

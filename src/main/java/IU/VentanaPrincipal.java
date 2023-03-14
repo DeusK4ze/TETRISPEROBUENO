@@ -53,7 +53,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public VentanaPrincipal() {
         initComponents();
-        panelXogo.setFocusable(true);
+       
 
     }
 
@@ -93,6 +93,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 panelXogoKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                panelXogoKeyTyped(evt);
+            }
         });
         panelXogo.setLayout(null);
         getContentPane().add(panelXogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 500, 700));
@@ -119,15 +122,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
         panelPuntosLayout.setVerticalGroup(
             panelPuntosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPuntosLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPuntosLayout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addComponent(lblPuntos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
-        getContentPane().add(panelPuntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, -1, -1));
+        getContentPane().add(panelPuntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 220, -1, -1));
 
         panelTempo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelTempo.setPreferredSize(new java.awt.Dimension(200, 100));
@@ -148,16 +151,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelTempoLayout.setHorizontalGroup(
             panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTempoLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
                 .addGroup(panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelTempoLayout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addGroup(panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(labelTiempo)))
-                    .addGroup(panelTempoLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel1)
+                        .addComponent(labelTiempo)))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         panelTempoLayout.setVerticalGroup(
             panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,24 +168,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addGap(25, 25, 25))
+                .addGap(16, 16, 16))
         );
 
         jTextField1.getAccessibleContext().setAccessibleName("txtfieldpuntos");
 
-        getContentPane().add(panelTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, -1, -1));
+        getContentPane().add(panelTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, -1, 110));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 200));
 
         bSalir.setText("SALIR");
+        bSalir.setFocusable(false);
         bSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bSalirActionPerformed(evt);
             }
         });
+        bSalir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                bSalirKeyPressed(evt);
+            }
+        });
 
         jButton1.setText("INICIAR");
+        jButton1.setFocusable(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -193,6 +200,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         bPausar.setText("PAUSA");
+        bPausar.setFocusable(false);
         bPausar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bPausarMouseClicked(evt);
@@ -227,14 +235,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(bPausar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addComponent(bSalir)
                 .addGap(31, 31, 31)
                 .addComponent(jButton1)
-                .addGap(38, 38, 38))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 520, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, -1, 250));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -271,16 +279,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         iniciarPartida();
+        panelXogo.requestFocus();
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void panelXogoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_panelXogoKeyPressed
         // TODO add your handling code here:
-
+        panelXogo.setFocusable(true);
+         panelXogo.requestFocus();
         try {
             switch (evt.getKeyCode()) {
                 case KeyEvent.VK_A -> {
                     xogo.moverFichaEsquerda();
-
                 }
                 case KeyEvent.VK_D -> {
                     xogo.moverFichaDereita();
@@ -295,15 +305,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (NullPointerException e) {
-            System.out.println("No hay ninguna ficha creada.");
+          
         }
     }//GEN-LAST:event_panelXogoKeyPressed
 
+    private void panelXogoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_panelXogoKeyTyped
+       System.out.println("No hay ninguna ficha creada.");
+    }//GEN-LAST:event_panelXogoKeyTyped
+
+    private void bSalirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bSalirKeyPressed
+
+        System.out.println("No hay ninguna ficha creada.");
+    }//GEN-LAST:event_bSalirKeyPressed
+
     public void pintarCadrado(JLabel lblCadrado) {
-
         panelXogo.add(lblCadrado);
-        System.out.println("pintar cadrado");
-
     }
 
     public void borrarCadrado(JLabel lblCadrado) {
@@ -326,9 +342,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }
 
-//    private void iniciarPartida(){
-//        time.start();
-//    }
     /**
      * @param args the command line arguments
      */
