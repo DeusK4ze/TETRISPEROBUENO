@@ -32,8 +32,10 @@ public class Xogo {
             Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
             while (iter.hasNext()) {
                 Cadrado item = iter.next();
-                item.lblCadrado.setLocation(item.x + LADOCADRADO, item.y);
-                 item.x += LADOCADRADO;
+                if (ePosicionValida(item.x, item.y)) {
+                    item.lblCadrado.setLocation(item.x + LADOCADRADO, item.y);
+                    item.x += LADOCADRADO;
+                }
             }
         }
         actualizarGraf();
@@ -47,45 +49,65 @@ public class Xogo {
                 Cadrado item = iter.next();
                 item.lblCadrado.setLocation(item.x - LADOCADRADO, item.y);
                 item.x -= LADOCADRADO;
-                
+
             }
         }
         actualizarGraf();
     }
 
     public void rotarFicha() {
-       if( ePosicionValida(MAX_X, MAX_Y)){
         fichaActual.rotar();
-        actualizarGraf();}
+        actualizarGraf();
     }
 
-//    public boolean ePosicionValida(int x, int y) {
-//        boolean posicionValida = true;
-//        if(x > MAX_X || x < 0 || y > MAX_Y || y < -LADOCADRADO){
-//        posicionValida=false;
-//        }
-//        Iterator<Cadrado> iter = cadradosChan.iterator();
-//        while (iter.hasNext()) {
-//            Cadrado chan = iter.next();
-//            if((chan.getX()== x && chan.getY()==y)){
-//            posicionValida=false;
-//            }
-//        }
-//        return posicionValida;
-//    }
-       
-     public boolean ePosicionValida(int x, int y) {
-        boolean posicionValida = false;
-        Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
+    public boolean ePosicionValida(int x, int y) {
+        boolean posicionValida = true;
+        if (x > MAX_X || x < 0 || y > MAX_Y || y < -LADOCADRADO) {
+            posicionValida = false;
+            System.out.println("non se rotou");
+        }
+        Iterator<Cadrado> iter = cadradosChan.iterator();
         while (iter.hasNext()) {
-            Cadrado c = iter.next();
-            if ((c.x >= 0) && (c.x <= MAX_X)) {
-                posicionValida = true;
+            Cadrado chan = iter.next();
+            if ((chan.getX() == x && chan.getY() == y)) {
+                posicionValida = false;
             }
         }
         return posicionValida;
     }
 
+//    public boolean ePosicionValida(int x, int y) {
+//        
+//    Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
+//    while (iter.hasNext()) {
+//        Cadrado cadrado = iter.next();
+//        int newX = cadrado.getX() + x;
+//        int newY = cadrado.getY() + y;
+//
+//         Comprobar si el cadrado está dentro del panel de juego
+//        if (newX < 0 || newX >= MAX_X || newY < 0 || newY >= MAX_Y) {
+//            return false;
+//        }
+//         Comprobar si el cadrado choca con otra ficha fija
+//        for (Cadrado cadrado1 : cadradosFijos) {
+//            if (cadradoFijo.getX() == newX && cadradoFijo.getY() == newY) {
+//                return false;
+//            }
+//        }
+//    }
+//    return true;
+//}
+//     public boolean ePosicionValida(int x, int y) {
+//        boolean posicionValida = false;
+//        Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
+//        while (iter.hasNext()) {
+//            Cadrado c = iter.next();
+//            if ((c.x >= 0) && (c.x <= MAX_X)) {
+//                posicionValida = true;
+//            }
+//        }
+//        return posicionValida;
+//    }
     public void xenerarNovaFicha() {
         fichaActual = fichaAleatoria();
         Iterator<Cadrado> its = fichaActual.cadrados.iterator();
@@ -99,7 +121,7 @@ public class Xogo {
     private Ficha fichaAleatoria() {
         int aleatorio = (int) Math.floor(Math.random() * 4 + 1);
         Ficha fichaleatoria = null;
-     
+        aleatorio = 3;
         switch (aleatorio) {
             case 1 -> {
                 fichaleatoria = new FichaBarra(this);
