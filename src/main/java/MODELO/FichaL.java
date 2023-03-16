@@ -28,50 +28,20 @@ public class FichaL extends Ficha {
 
     @Override
     public boolean rotar() {
+
         switch (posicion) {
             case 0 -> {
-                c1.lblCadrado.setLocation(c1.x - xogo.LADOCADRADO, c1.y + xogo.LADOCADRADO);
-                c1.x -= xogo.LADOCADRADO;
-                c1.y += xogo.LADOCADRADO;
-                c3.lblCadrado.setLocation(c3.x + xogo.LADOCADRADO, c3.y - xogo.LADOCADRADO);
-                c3.x += xogo.LADOCADRADO;
-                c3.y -= xogo.LADOCADRADO;
-                c4.lblCadrado.setLocation(c4.x, c4.y - (xogo.LADOCADRADO * 2));
-                c4.y -= (xogo.LADOCADRADO * 2);
-                posicion++;
+                rotar0();
+
             }
             case 1 -> {
-                c1.lblCadrado.setLocation(c1.x + xogo.LADOCADRADO, c1.y + xogo.LADOCADRADO);
-                c1.x += xogo.LADOCADRADO;
-                c1.y += xogo.LADOCADRADO;
-                c3.lblCadrado.setLocation(c3.x - xogo.LADOCADRADO, c3.y - xogo.LADOCADRADO);
-                c3.x -= xogo.LADOCADRADO;
-                c3.y -= xogo.LADOCADRADO;
-                c4.lblCadrado.setLocation(c4.x - (xogo.LADOCADRADO * 2), c4.y);
-                c4.x -= (xogo.LADOCADRADO * 2);
-                posicion++;
+                rotar1();
             }
             case 2 -> {
-                c1.lblCadrado.setLocation(c1.x + xogo.LADOCADRADO, c1.y - xogo.LADOCADRADO);
-                c1.x += xogo.LADOCADRADO;
-                c1.y -= xogo.LADOCADRADO;
-                c3.lblCadrado.setLocation(c3.x - xogo.LADOCADRADO, c3.y + xogo.LADOCADRADO);
-                c3.x -= xogo.LADOCADRADO;
-                c3.y += xogo.LADOCADRADO;
-                c4.lblCadrado.setLocation(c4.x, c4.y + (xogo.LADOCADRADO * 2));
-                c4.y += (xogo.LADOCADRADO * 2);
-                posicion++;
+                rotar2();
             }
             case 3 -> {
-                c1.lblCadrado.setLocation(c1.x - xogo.LADOCADRADO, c1.y - xogo.LADOCADRADO);
-                c1.x -= xogo.LADOCADRADO;
-                c1.y -= xogo.LADOCADRADO;
-                c3.lblCadrado.setLocation(c3.x + xogo.LADOCADRADO, c3.y + xogo.LADOCADRADO);
-                c3.x += xogo.LADOCADRADO;
-                c3.y += xogo.LADOCADRADO;
-                c4.lblCadrado.setLocation(c4.x + (xogo.LADOCADRADO * 2), c4.y);
-                c4.x += (xogo.LADOCADRADO * 2);
-                posicion++;
+                rotar3();
             }
             default -> {
             }
@@ -81,4 +51,54 @@ public class FichaL extends Ficha {
         }
         return true;
     }
+
+    private void rotar0() {
+        c1.lblCadrado.setLocation(c1.x - xogo.LADOCADRADO, c1.y + xogo.LADOCADRADO);
+        c1.x -= xogo.LADOCADRADO;
+        c1.y += xogo.LADOCADRADO;
+        c3.lblCadrado.setLocation(c3.x + xogo.LADOCADRADO, c3.y - xogo.LADOCADRADO);
+        c3.x += xogo.LADOCADRADO;
+        c3.y -= xogo.LADOCADRADO;
+        c4.lblCadrado.setLocation(c4.x, c4.y - (xogo.LADOCADRADO * 2));
+        c4.y -= (xogo.LADOCADRADO * 2);
+        posicion++;
+    }
+
+    private void rotar1() {
+        c1.lblCadrado.setLocation(c1.x + xogo.LADOCADRADO, c1.y + xogo.LADOCADRADO);
+        c1.x += xogo.LADOCADRADO;
+        c1.y += xogo.LADOCADRADO;
+        c3.lblCadrado.setLocation(c3.x - xogo.LADOCADRADO, c3.y - xogo.LADOCADRADO);
+        c3.x -= xogo.LADOCADRADO;
+        c3.y -= xogo.LADOCADRADO;
+        c4.lblCadrado.setLocation(c4.x - (xogo.LADOCADRADO * 2), c4.y);
+        c4.x -= (xogo.LADOCADRADO * 2);
+        posicion++;
+    }
+
+    private void rotar2() {
+        c1.lblCadrado.setLocation(c1.x + xogo.LADOCADRADO, c1.y - xogo.LADOCADRADO);
+        c1.x += xogo.LADOCADRADO;
+        c1.y -= xogo.LADOCADRADO;
+        c3.lblCadrado.setLocation(c3.x - xogo.LADOCADRADO, c3.y + xogo.LADOCADRADO);
+        c3.x -= xogo.LADOCADRADO;
+        c3.y += xogo.LADOCADRADO;
+        c4.lblCadrado.setLocation(c4.x, c4.y + (xogo.LADOCADRADO * 2));
+        c4.y += (xogo.LADOCADRADO * 2);
+        posicion++;
+
+    }
+
+    private void rotar3() {
+        c1.lblCadrado.setLocation(c1.x - xogo.LADOCADRADO, c1.y - xogo.LADOCADRADO);
+        c1.x -= xogo.LADOCADRADO;
+        c1.y -= xogo.LADOCADRADO;
+        c3.lblCadrado.setLocation(c3.x + xogo.LADOCADRADO, c3.y + xogo.LADOCADRADO);
+        c3.x += xogo.LADOCADRADO;
+        c3.y += xogo.LADOCADRADO;
+        c4.lblCadrado.setLocation(c4.x + (xogo.LADOCADRADO * 2), c4.y);
+        c4.x += (xogo.LADOCADRADO * 2);
+        posicion++;
+    }
+
 }

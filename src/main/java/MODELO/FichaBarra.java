@@ -5,7 +5,6 @@
 package MODELO;
 
 import java.awt.Color;
-import java.util.Iterator;
 
 /**
  *
@@ -13,7 +12,6 @@ import java.util.Iterator;
  */
 public class FichaBarra extends Ficha {
 
-    Iterator<Cadrado> it = cadrados.iterator();
     Cadrado c1 = new Cadrado(250, -50, Color.RED);
     Cadrado c2 = new Cadrado(250, 0, Color.RED);
     Cadrado c3 = new Cadrado(250, 50, Color.RED);
@@ -33,37 +31,42 @@ public class FichaBarra extends Ficha {
         boolean rotar = true;
         switch (posicion) {
             case 0 -> {
-                if (xogo.ePosicionValida(c1.x - xogo.LADOCADRADO, c1.y + xogo.LADOCADRADO) && (xogo.ePosicionValida(c3.x + xogo.LADOCADRADO, c3.y - xogo.LADOCADRADO)) && (xogo.ePosicionValida(c4.x + (xogo.LADOCADRADO * 2), c4.y - (xogo.LADOCADRADO * 2)))) {
-                    c1.lblCadrado.setLocation(c1.x - xogo.LADOCADRADO, c1.y + xogo.LADOCADRADO);
-                    c1.x -= xogo.LADOCADRADO;
-                    c1.y += xogo.LADOCADRADO;
-                    c3.lblCadrado.setLocation(c3.x + xogo.LADOCADRADO, c3.y - xogo.LADOCADRADO);
-                    c3.x += xogo.LADOCADRADO;
-                    c3.y -= xogo.LADOCADRADO;
-                    c4.lblCadrado.setLocation(c4.x + (xogo.LADOCADRADO * 2), c4.y - (xogo.LADOCADRADO * 2));
-                    c4.x += (xogo.LADOCADRADO * 2);
-                    c4.y -= (xogo.LADOCADRADO * 2);
-                    posicion++;
-                }
+                rotar0();
             }
             case 1 -> {
-                c1.lblCadrado.setLocation(c1.x + xogo.LADOCADRADO, c1.y - xogo.LADOCADRADO);
-                c1.x += xogo.LADOCADRADO;
-                c1.y -= xogo.LADOCADRADO;
-                c3.lblCadrado.setLocation(c3.x - xogo.LADOCADRADO, c3.y + xogo.LADOCADRADO);
-                c3.x -= xogo.LADOCADRADO;
-                c3.y += xogo.LADOCADRADO;
-                c4.lblCadrado.setLocation(c4.x - (xogo.LADOCADRADO * 2), c3.y + (xogo.LADOCADRADO * 2));
-                c4.x -= (xogo.LADOCADRADO * 2);
-                c4.y += (xogo.LADOCADRADO * 2);
-                posicion++;
+                rotar1();
             }
-            default -> {
-            }
+
         }
         if (posicion == 2) {
             posicion = 0;
         }
         return rotar;
+    }
+
+    private void rotar0() {
+        c1.lblCadrado.setLocation(c1.x - xogo.LADOCADRADO, c1.y + xogo.LADOCADRADO);
+        c1.x -= xogo.LADOCADRADO;
+        c1.y += xogo.LADOCADRADO;
+        c3.lblCadrado.setLocation(c3.x + xogo.LADOCADRADO, c3.y - xogo.LADOCADRADO);
+        c3.x += xogo.LADOCADRADO;
+        c3.y -= xogo.LADOCADRADO;
+        c4.lblCadrado.setLocation(c4.x + (xogo.LADOCADRADO * 2), c4.y - (xogo.LADOCADRADO * 2));
+        c4.x += (xogo.LADOCADRADO * 2);
+        c4.y -= (xogo.LADOCADRADO * 2);
+        posicion++;
+    }
+
+    private void rotar1() {
+        c1.lblCadrado.setLocation(c1.x + xogo.LADOCADRADO, c1.y - xogo.LADOCADRADO);
+        c1.x += xogo.LADOCADRADO;
+        c1.y -= xogo.LADOCADRADO;
+        c3.lblCadrado.setLocation(c3.x - xogo.LADOCADRADO, c3.y + xogo.LADOCADRADO);
+        c3.x -= xogo.LADOCADRADO;
+        c3.y += xogo.LADOCADRADO;
+        c4.lblCadrado.setLocation(c4.x - (xogo.LADOCADRADO * 2), c4.y + (xogo.LADOCADRADO * 2));
+        c4.x -= (xogo.LADOCADRADO * 2);
+        c4.y += (xogo.LADOCADRADO * 2);
+        posicion++;
     }
 }

@@ -51,7 +51,7 @@ public abstract class Ficha {
             Cadrado cmover = iter.next();
             cmover.lblCadrado.setLocation(cmover.x, cmover.y + xogo.LADOCADRADO);
             cmover.y += xogo.LADOCADRADO;
-            System.out.println(cmover.x + "" + "" + cmover.y);
+            System.out.println(cmover.x + ", " + "" + cmover.y);
         }
         return true;
     }

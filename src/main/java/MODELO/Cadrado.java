@@ -29,6 +29,7 @@ public class Cadrado {
         lblCadrado.setBounds(x, y, LADOCADRADO, LADOCADRADO);
         lblCadrado.setOpaque(true);
         lblCadrado.setVisible(true);
+     
     }
 
     public void setCorRecheo(Color corRecheo) {
@@ -47,9 +48,6 @@ public class Cadrado {
         return lblCadrado;
     }
 
-    public Cadrado() {
-
-    }
 
     public int getX() {
         return x;

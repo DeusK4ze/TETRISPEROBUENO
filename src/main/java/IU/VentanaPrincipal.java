@@ -54,7 +54,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         initComponents();
        
-
     }
 
     /**
@@ -80,7 +79,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         bPausar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBounds(new java.awt.Rectangle(0, 0, 900, 900));
+        setBackground(new java.awt.Color(200, 150, 200));
+        setBounds(new java.awt.Rectangle(0, 0, 450, 650));
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 900, 900));
         setMinimumSize(new java.awt.Dimension(900, 800));
         setResizable(false);
@@ -88,6 +88,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         panelXogo.setBackground(new java.awt.Color(255, 255, 255));
         panelXogo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.white, java.awt.Color.darkGray, java.awt.Color.lightGray));
+        panelXogo.setMaximumSize(new java.awt.Dimension(500, 700));
+        panelXogo.setMinimumSize(new java.awt.Dimension(500, 700));
         panelXogo.setPreferredSize(new java.awt.Dimension(500, 700));
         panelXogo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -105,7 +107,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         lblPuntos.setText("PUNTOS");
 
+        jTextField2.setEditable(false);
         jTextField2.setText("0");
+        jTextField2.setFocusable(false);
 
         javax.swing.GroupLayout panelPuntosLayout = new javax.swing.GroupLayout(panelPuntos);
         panelPuntos.setLayout(panelPuntosLayout);
@@ -139,7 +143,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setText("LINEAS");
 
+        jTextField1.setEditable(false);
         jTextField1.setText("0:00");
+        jTextField1.setFocusable(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -264,7 +270,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void bPausarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bPausarKeyPressed
         // TODO add your handling code here:
-
+        
     }//GEN-LAST:event_bPausarKeyPressed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
@@ -280,6 +286,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         iniciarPartida();
         panelXogo.requestFocus();
+        
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -310,12 +317,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_panelXogoKeyPressed
 
     private void panelXogoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_panelXogoKeyTyped
-       System.out.println("No hay ninguna ficha creada.");
+       
     }//GEN-LAST:event_panelXogoKeyTyped
 
     private void bSalirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bSalirKeyPressed
 
-        System.out.println("No hay ninguna ficha creada.");
+        
     }//GEN-LAST:event_bSalirKeyPressed
 
     public void pintarCadrado(JLabel lblCadrado) {
@@ -323,7 +330,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     public void borrarCadrado(JLabel lblCadrado) {
-        panelXogo.remove(lblCadrado);
+       if(xogo.cadradosChan.size() == 10){
+           xogo.borrarLinasCompletas();
+           
+       }
     }
 
     public void mostrarNumeroLinas(int numeroLinas) {
@@ -331,14 +341,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     public void mostrarFinDoXogo() {
-
+       
     }
 
     private void iniciarPartida() {
         if (!pause) {
             timer.start();
             xogo.xenerarNovaFicha();
-        }
+        } 
 
     }
 
