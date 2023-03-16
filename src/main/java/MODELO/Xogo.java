@@ -121,7 +121,6 @@ public class Xogo {
     private Ficha fichaAleatoria() {
         int aleatorio = (int) Math.floor(Math.random() * 4 + 1);
         Ficha fichaleatoria = null;
-        aleatorio = 3;
         switch (aleatorio) {
             case 1 -> {
                 fichaleatoria = new FichaBarra(this);

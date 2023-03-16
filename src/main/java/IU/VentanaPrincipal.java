@@ -100,7 +100,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         panelXogo.setLayout(null);
-        getContentPane().add(panelXogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 500, 700));
+        getContentPane().add(panelXogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 500, 700));
 
         panelPuntos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelPuntos.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -134,7 +134,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(15, 15, 15))
         );
 
-        getContentPane().add(panelPuntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 220, -1, -1));
+        getContentPane().add(panelPuntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 230, -1, -1));
 
         panelTempo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelTempo.setPreferredSize(new java.awt.Dimension(200, 100));
@@ -179,7 +179,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jTextField1.getAccessibleContext().setAccessibleName("txtfieldpuntos");
 
-        getContentPane().add(panelTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, -1, 110));
+        getContentPane().add(panelTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, -1, 110));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -248,7 +248,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(88, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, -1, 250));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, -1, 250));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
