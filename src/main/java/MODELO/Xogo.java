@@ -23,14 +23,6 @@ public class Xogo {
     public ArrayList<Cadrado> cadradosChan = new ArrayList();
     public VentanaPrincipal ventanaPrincipal;
 
-    public void setMAX_X(int MAX_X) {
-        this.MAX_X = MAX_X;
-    }
-
-    public void setMAX_Y(int MAX_Y) {
-        this.MAX_Y = MAX_Y;
-    }
-
     public Xogo(VentanaPrincipal ventanaPrincipal) {
         this.ventanaPrincipal = ventanaPrincipal;
     }
@@ -38,47 +30,56 @@ public class Xogo {
     public void moverFichaDereita() {
         if (fichaActual.moverDereita()) {
             Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
-            while (iter.hasNext() && ePosicionValida(MAX_X, MAX_Y)) {
-                if (ePosicionValida(MAX_X, MAX_Y)) {
-                    Cadrado item = iter.next();
-                    item.lblCadrado.setLocation(item.x + LADOCADRADO, item.y);
-                    item.x += LADOCADRADO;
-                }
-                System.out.println("Mover cadrado dereita");
+            while (iter.hasNext()) {
+                Cadrado item = iter.next();
+                item.lblCadrado.setLocation(item.x + LADOCADRADO, item.y);
+                 item.x += LADOCADRADO;
             }
-            actualizarGraf();
         }
+        actualizarGraf();
     }
 
     public void moverFichaEsquerda() {
-
+        System.out.println("mover cadrado esquerda");
         if (fichaActual.moverEsquerda()) {
             Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
             while (iter.hasNext()) {
-                if (ePosicionValida(MAX_X, MAX_Y)) {
-                    Cadrado item = iter.next();
-                    item.lblCadrado.setLocation(item.x - LADOCADRADO, item.y);
-                    item.x -= LADOCADRADO;
-                }
+                Cadrado item = iter.next();
+                item.lblCadrado.setLocation(item.x - LADOCADRADO, item.y);
+                item.x -= LADOCADRADO;
+                
             }
-            System.out.println("mover cadrado esquerda");
         }
         actualizarGraf();
     }
 
     public void rotarFicha() {
-        if (ePosicionValida(MAX_X, MAX_Y)) {
-            fichaActual.rotar();
-            actualizarGraf();
-        } 
+       if( ePosicionValida(MAX_X, MAX_Y)){
+        fichaActual.rotar();
+        actualizarGraf();}
     }
 
-    public boolean ePosicionValida(int x, int y) {
+//    public boolean ePosicionValida(int x, int y) {
+//        boolean posicionValida = true;
+//        if(x > MAX_X || x < 0 || y > MAX_Y || y < -LADOCADRADO){
+//        posicionValida=false;
+//        }
+//        Iterator<Cadrado> iter = cadradosChan.iterator();
+//        while (iter.hasNext()) {
+//            Cadrado chan = iter.next();
+//            if((chan.getX()== x && chan.getY()==y)){
+//            posicionValida=false;
+//            }
+//        }
+//        return posicionValida;
+//    }
+       
+     public boolean ePosicionValida(int x, int y) {
         boolean posicionValida = false;
         Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
         while (iter.hasNext()) {
             Cadrado c = iter.next();
-            if ((c.getX() >= 50) && (c.getX() <= MAX_X) && (c.getY() >= 0) && (c.getY() <= MAX_Y)) {
+            if ((c.x >= 0) && (c.x <= MAX_X)) {
                 posicionValida = true;
             }
         }
@@ -98,23 +99,23 @@ public class Xogo {
     private Ficha fichaAleatoria() {
         int aleatorio = (int) Math.floor(Math.random() * 4 + 1);
         Ficha fichaleatoria = null;
-        aleatorio = 1;
+     
         switch (aleatorio) {
             case 1 -> {
                 fichaleatoria = new FichaBarra(this);
-
+                System.out.println("Se ha creado ficha Barra");
             }
             case 2 -> {
                 fichaleatoria = new FichaCadrada(this);
-
+                System.out.println("Se ha creado ficha Cadrada");
             }
             case 3 -> {
                 fichaleatoria = new FichaL(this);
-
+                System.out.println("Se ha creado ficha L");
             }
             case 4 -> {
                 fichaleatoria = new FichaT(this);
-
+                System.out.println("Se ha creado ficha T");
             }
         }
         return fichaleatoria;
@@ -125,44 +126,27 @@ public class Xogo {
         while (iter.hasNext()) {
             Cadrado item = iter.next();
             cadradosChan.add(item);
-            
-
         }
-        System.out.println("Ficha engadida");
     }
 
     public void borrarLinasCompletas() {
-        Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
-        if (cadradosChan.size() == 10) {
-            borrarLina();
-            actualizarGraf();
-        }
+
     }
 
     public void borrarLina() {
 
-        Iterator<Cadrado> iter = cadradosChan.iterator();
-        if (chocaFichaCoChan() && cadradosChan.size() == 10) {
-            while (iter.hasNext()) {
-                Cadrado cChan = iter.next();
-                    ventanaPrincipal.borrarCadrado(cChan.lblCadrado);
-                    actualizarGraf();
-            }
-        }
     }
 
     public boolean chocaFichaCoChan() {
-        boolean tocaChan = false;
+        boolean chocaCoChan = false;
         Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
         while (iter.hasNext()) {
             Cadrado item = iter.next();
-            if (item.getY() == MAX_Y || comprobarCadradosChan(item.getY(), item.getX())) {
-                tocaChan = true;
-                System.out.println("Ficha chocou co chan");
+            if (item.y == MAX_Y || comprobarCadradosChan(item.y, item.x)) {
+                chocaCoChan = true;
             }
         }
-
-        return tocaChan;
+        return chocaCoChan;
     }
 
     private boolean comprobarCadradosChan(int y, int x) {
@@ -170,7 +154,7 @@ public class Xogo {
         Iterator<Cadrado> iter = cadradosChan.iterator();
         while (iter.hasNext()) {
             Cadrado item = iter.next();
-            if ((item.getY() == (y + LADOCADRADO)) && (item.getX() == x)) {
+            if ((item.y == (y + LADOCADRADO)) && (item.x == x)) {
                 chocaCoChan = true;
             }
         }
