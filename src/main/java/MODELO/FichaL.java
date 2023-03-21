@@ -130,5 +130,5 @@ public class FichaL extends Ficha {
         c4.x += (xogo.LADOCADRADO * 2);
         posicion++;
     }
-
+//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
 }
