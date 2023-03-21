@@ -25,20 +25,30 @@ public class FichaBarra extends Ficha {
         cadrados.add(c3);
         cadrados.add(c4);
     }
-
+ /**
+ *
+ * 
+ */
     @Override
     public boolean rotar() {
         boolean rotar = true;
         switch (posicion) {
             case 0 -> {
-                if(super.xogo.ePosicionValida(posicion, posicion) && c1.x<0 && c2.x < 0 && c2.x < 400 && c3.x > 450 && c4.x>450){
-                rotar0();
-                } else if(super.xogo.ePosicionValida(posicion, posicion) && c1.x != 0 && c2.x!=0 && c2.x != 400&& c3.x!= 450 && c4.x!=450){
+                if (super.xogo.ePosicionValida(posicion, posicion) && c1.x < 0 
+                        && c2.x < 0 && c2.x < 400 && c3.x > 450 && c4.x > 450) {
+                    rotar0();
+                } else if (super.xogo.ePosicionValida(posicion, posicion) 
+                        && c1.x != 0 && c2.x != 0 && c2.x != 400 && c3.x != 450 && c4.x != 450) {
                     rotar0();
                 }
             }
             case 1 -> {
-                rotar1();
+                 if (super.xogo.ePosicionValida(posicion, posicion) && c4.y > 600) {
+                    rotar1();
+                } else if (super.xogo.ePosicionValida(posicion, posicion) 
+                        && c4.y!=600) {
+                    rotar1();
+                }
             }
 
         }
@@ -47,7 +57,10 @@ public class FichaBarra extends Ficha {
         }
         return rotar;
     }
-
+ /**
+ *
+ * 
+ */
     private void rotar0() {
         c1.lblCadrado.setLocation(c1.x - xogo.LADOCADRADO, c1.y + xogo.LADOCADRADO);
         c1.x -= xogo.LADOCADRADO;
@@ -60,7 +73,10 @@ public class FichaBarra extends Ficha {
         c4.y -= (xogo.LADOCADRADO * 2);
         posicion++;
     }
-
+ /**
+ *
+ * 
+ */
     private void rotar1() {
         c1.lblCadrado.setLocation(c1.x + xogo.LADOCADRADO, c1.y - xogo.LADOCADRADO);
         c1.x += xogo.LADOCADRADO;

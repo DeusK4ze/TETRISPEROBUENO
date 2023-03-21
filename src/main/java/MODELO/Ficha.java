@@ -20,41 +20,53 @@ public abstract class Ficha {
     public Ficha(Xogo xogo) {
         this.xogo = xogo;
     }
-
+ /**
+ *
+ * 
+ */
     public boolean moverDereita() {
-        boolean mover = true;
-        Iterator<Cadrado> iter = cadrados.iterator();
+         boolean mover = true;
+        Iterator<Cadrado> iter = xogo.fichaActual.cadrados.iterator();
         while (iter.hasNext()) {
             Cadrado cmover = iter.next();
-            if (cmover.lblCadrado.getX() == xogo.MAX_X) {
+            if (!xogo.ePosicionValida(cmover.x + xogo.LADOCADRADO, cmover.y)) {
                 mover = false;
             }
         }
         return mover;
     }
-
-    public boolean moverEsquerda() {
+ /**
+ *
+ * 
+ */
+    public boolean moverEsquerda() {  
         boolean mover = true;
-        Iterator<Cadrado> iter = cadrados.iterator();
+        Iterator<Cadrado> iter = xogo.fichaActual.cadrados.iterator();
         while (iter.hasNext()) {
             Cadrado cmover = iter.next();
-            if (cmover.x == 0) {
+            if (!xogo.ePosicionValida(cmover.x - xogo.LADOCADRADO, cmover.y)) {
                 mover = false;
             }
         }
         return mover;
     }
-
+ /**
+ *
+ * 
+ */
     public boolean moverAbaixo() {
         Iterator<Cadrado> iter = cadrados.iterator();
         while (iter.hasNext()) {
             Cadrado cmover = iter.next();
             cmover.lblCadrado.setLocation(cmover.x, cmover.y + xogo.LADOCADRADO);
             cmover.y += xogo.LADOCADRADO;
-            System.out.println(cmover.x + ", " + "" + cmover.y);
+//            System.out.println(cmover.x + ", " + "" + cmover.y);
         }
         return true;
     }
-
+ /**
+ *
+ * 
+ */
     public abstract boolean rotar();
 }

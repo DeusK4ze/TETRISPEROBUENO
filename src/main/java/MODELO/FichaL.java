@@ -25,7 +25,10 @@ public class FichaL extends Ficha {
         cadrados.add(c3);
         cadrados.add(c4);
     }
-
+ /**
+ *
+ * 
+ */
     @Override
     public boolean rotar() {
 
@@ -66,7 +69,10 @@ public class FichaL extends Ficha {
         }
         return true;
     }
-
+ /**
+ *
+ * 
+ */
     private void rotar0() {
         c1.lblCadrado.setLocation(c1.x - xogo.LADOCADRADO, c1.y + xogo.LADOCADRADO);
         c1.x -= xogo.LADOCADRADO;
@@ -78,7 +84,10 @@ public class FichaL extends Ficha {
         c4.y -= (xogo.LADOCADRADO * 2);
         posicion++;
     }
-
+ /**
+ *
+ * 
+ */
     private void rotar1() {
         c1.lblCadrado.setLocation(c1.x + xogo.LADOCADRADO, c1.y + xogo.LADOCADRADO);
         c1.x += xogo.LADOCADRADO;
@@ -90,7 +99,10 @@ public class FichaL extends Ficha {
         c4.x -= (xogo.LADOCADRADO * 2);
         posicion++;
     }
-
+ /**
+ *
+ * 
+ */
     private void rotar2() {
         c1.lblCadrado.setLocation(c1.x + xogo.LADOCADRADO, c1.y - xogo.LADOCADRADO);
         c1.x += xogo.LADOCADRADO;
@@ -103,7 +115,10 @@ public class FichaL extends Ficha {
         posicion++;
 
     }
-
+ /**
+ *
+ * 
+ */
     private void rotar3() {
         c1.lblCadrado.setLocation(c1.x - xogo.LADOCADRADO, c1.y - xogo.LADOCADRADO);
         c1.x -= xogo.LADOCADRADO;

@@ -5,7 +5,9 @@
 package MODELO;
 
 import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.border.Border;
 
 /**
  *
@@ -18,6 +20,8 @@ public class Cadrado {
     public int y;
     public Color corRecheo;
     public JLabel lblCadrado = new JLabel();
+    private Border bordeCadrado = BorderFactory.createLineBorder(Color.black);
+
 
     public Cadrado(int x, int y, Color corRecheo) {
         this.x = x;
@@ -29,7 +33,7 @@ public class Cadrado {
         lblCadrado.setBounds(x, y, LADOCADRADO, LADOCADRADO);
         lblCadrado.setOpaque(true);
         lblCadrado.setVisible(true);
-     
+        lblCadrado.setBorder(bordeCadrado);
     }
 
     public void setCorRecheo(Color corRecheo) {

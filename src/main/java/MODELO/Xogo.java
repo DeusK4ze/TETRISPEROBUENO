@@ -5,6 +5,7 @@
 package MODELO;
 
 import IU.VentanaPrincipal;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -27,55 +28,72 @@ public class Xogo {
         this.ventanaPrincipal = ventanaPrincipal;
     }
 
+    /**
+     *
+     *
+     */
     public void moverFichaDereita() {
         if (fichaActual.moverDereita()) {
             Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
             while (iter.hasNext()) {
                 Cadrado item = iter.next();
-                if (ePosicionValida(item.x, item.y)) {
-                    item.lblCadrado.setLocation(item.x + LADOCADRADO, item.y);
-                    item.x += LADOCADRADO;
-                }
+                item.lblCadrado.setLocation(item.x + LADOCADRADO, item.y);
+                item.x += LADOCADRADO;
             }
         }
         actualizarGraf();
     }
 
+    /**
+     *
+     *
+     */
     public void moverFichaEsquerda() {
-        System.out.println("mover cadrado esquerda");
         if (fichaActual.moverEsquerda()) {
             Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
             while (iter.hasNext()) {
                 Cadrado item = iter.next();
                 item.lblCadrado.setLocation(item.x - LADOCADRADO, item.y);
                 item.x -= LADOCADRADO;
-
             }
         }
         actualizarGraf();
     }
 
+    /**
+     *
+     *
+     */
     public void rotarFicha() {
         fichaActual.rotar();
         actualizarGraf();
     }
 
+    /**
+     *
+     *
+     */
     public boolean ePosicionValida(int x, int y) {
         boolean posicionValida = true;
-        if (x > MAX_X || x < 0 || y > MAX_Y || y < -LADOCADRADO) {
+        if (x > MAX_X || x < 0) {
             posicionValida = false;
-            System.out.println("non se rotou");
-        }
-        Iterator<Cadrado> iter = cadradosChan.iterator();
-        while (iter.hasNext()) {
-            Cadrado chan = iter.next();
-            if ((chan.getX() == x && chan.getY() == y)) {
-                posicionValida = false;
+        } else {
+            Iterator<Cadrado> iter = cadradosChan.iterator();
+            while (iter.hasNext()) {
+                Cadrado chan = iter.next();
+                if (chan.getX() == x && chan.getY() == y) {
+                    posicionValida = false;
+                }
             }
         }
         return posicionValida;
+
     }
 
+    /**
+     *
+     *
+     */
 //    public boolean ePosicionValida(int x, int y) {
 //        
 //    Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
@@ -108,6 +126,10 @@ public class Xogo {
 //        }
 //        return posicionValida;
 //    }
+    /**
+     *
+     *
+     */
     public void xenerarNovaFicha() {
         fichaActual = fichaAleatoria();
         Iterator<Cadrado> its = fichaActual.cadrados.iterator();
@@ -118,46 +140,72 @@ public class Xogo {
         }
     }
 
+    /**
+     * Método que utiliza el metodo Math.floor(Math.random() * 4 + 1), para
+     * generar un numero aleatorio entre los numeris 1,2,3 y 4.
+     *
+     */
     private Ficha fichaAleatoria() {
         int aleatorio = (int) Math.floor(Math.random() * 4 + 1);
         Ficha fichaleatoria = null;
         switch (aleatorio) {
             case 1 -> {
                 fichaleatoria = new FichaBarra(this);
-                System.out.println("Se ha creado ficha Barra");
             }
             case 2 -> {
                 fichaleatoria = new FichaCadrada(this);
-                System.out.println("Se ha creado ficha Cadrada");
             }
             case 3 -> {
                 fichaleatoria = new FichaL(this);
-                System.out.println("Se ha creado ficha L");
             }
             case 4 -> {
                 fichaleatoria = new FichaT(this);
-                System.out.println("Se ha creado ficha T");
             }
         }
         return fichaleatoria;
     }
 
+    /**
+     *
+     *
+     *
+     */
     public void engadirFichaAoChan() {
+
         Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
         while (iter.hasNext()) {
             Cadrado item = iter.next();
             cadradosChan.add(item);
+            item.setCorRecheo(Color.pink);
+            System.out.println("Suelo");
         }
+        System.out.println("Se ha añadido AL SUELO");
+
     }
 
+    /**
+     *
+     *
+     *
+     */
     public void borrarLinasCompletas() {
 
     }
 
+    /**
+     *
+     *
+     *
+     */
     public void borrarLina() {
 
     }
 
+    /**
+     *
+     *
+     *
+     */
     public boolean chocaFichaCoChan() {
         boolean chocaCoChan = false;
         Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
@@ -165,11 +213,17 @@ public class Xogo {
             Cadrado item = iter.next();
             if (item.y == MAX_Y || comprobarCadradosChan(item.y, item.x)) {
                 chocaCoChan = true;
+                System.out.println("CHOCA SUELO");
             }
         }
         return chocaCoChan;
     }
 
+    /**
+     *
+     *
+     *
+     */
     private boolean comprobarCadradosChan(int y, int x) {
         boolean chocaCoChan = false;
         Iterator<Cadrado> iter = cadradosChan.iterator();
@@ -177,21 +231,50 @@ public class Xogo {
             Cadrado item = iter.next();
             if ((item.y == (y + LADOCADRADO)) && (item.x == x)) {
                 chocaCoChan = true;
+                System.out.println("Choca co chan true");
             }
         }
         return chocaCoChan;
     }
 
+    /**
+     *
+     *
+     *
+     */
     public void moverFichaAbaixo() {
         fichaActual.moverAbaixo();
         actualizarGraf();
     }
 
+    /**
+     *
+     *
+     *
+     */
     private void actualizarGraf() {
         if (chocaFichaCoChan()) {
             engadirFichaAoChan();
             xenerarNovaFicha();
+
         }
     }
 
+    /**
+     *
+     *
+     *
+     */
+    private boolean detectarFinPartida(ArrayList<Cadrado> cadradoschan) {
+        //Recorre el arraylist de cadrados chan
+        for (Cadrado cadrado : cadradoschan) {
+            //Si algun cuadrado tiene cordenada y=0 la partida ha terminado
+            if (cadrado.getY() == 0) {
+                System.out.println("HA TERMINADO");
+                return true;
+            }
+        }
+        //Si no se encuentra algun cuadrado en la cordenada y=0 la partida sigue
+        return false;
+    }
 }

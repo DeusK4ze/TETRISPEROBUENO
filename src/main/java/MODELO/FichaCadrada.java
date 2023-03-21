@@ -24,7 +24,10 @@ public class FichaCadrada extends Ficha {
         cadrados.add(c3);
         cadrados.add(c4);
     }
-
+ /**
+ *
+ * 
+ */
     @Override
     public boolean rotar() {
        

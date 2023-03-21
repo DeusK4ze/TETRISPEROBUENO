@@ -25,7 +25,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     int puntuacion = 0;
     boolean pause = false;
     MODELO.Xogo xogo = new MODELO.Xogo(this);
-
+ /**
+ *
+ *
+ */
     Timer timer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -50,10 +53,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         }
     });
-
+ /**
+ *
+ * 
+ */
     public VentanaPrincipal() {
-        initComponents();
-       
+        initComponents();   
     }
 
     /**
@@ -79,14 +84,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         bPausar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(200, 150, 200));
+        setBackground(new java.awt.Color(255, 255, 255));
         setBounds(new java.awt.Rectangle(0, 0, 450, 650));
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 900, 900));
         setMinimumSize(new java.awt.Dimension(900, 800));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelXogo.setBackground(new java.awt.Color(255, 255, 255));
+        panelXogo.setBackground(new java.awt.Color(102, 102, 255));
         panelXogo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.white, java.awt.Color.darkGray, java.awt.Color.lightGray));
         panelXogo.setMaximumSize(new java.awt.Dimension(500, 700));
         panelXogo.setMinimumSize(new java.awt.Dimension(500, 700));
@@ -157,13 +162,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelTempoLayout.setHorizontalGroup(
             panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTempoLayout.createSequentialGroup()
-                .addGap(73, 73, 73)
+                .addGap(20, 20, 20)
                 .addGroup(panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel1)
                         .addComponent(labelTiempo)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
         panelTempoLayout.setVerticalGroup(
             panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +184,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jTextField1.getAccessibleContext().setAccessibleName("txtfieldpuntos");
 
-        getContentPane().add(panelTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, -1, 110));
+        getContentPane().add(panelTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, 90, 110));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -252,7 +257,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ /**
+ *
+ * 
+ */
     private void bPausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPausarActionPerformed
         // TODO add your handling code here:
         if (!pause) {
@@ -272,7 +280,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_bPausarKeyPressed
-
+ /**
+ *
+ * 
+ */
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
         // TODO add your handling code here:
         System.exit(0);
@@ -289,7 +300,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_jButton1ActionPerformed
-
+ /**
+ *
+ * 
+ */
     private void panelXogoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_panelXogoKeyPressed
         // TODO add your handling code here:
         panelXogo.setFocusable(true);
@@ -324,26 +338,41 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_bSalirKeyPressed
-
+ /**
+ *
+ * 
+ */
     public void pintarCadrado(JLabel lblCadrado) {
         panelXogo.add(lblCadrado);
     }
-
+ /**
+ *
+ * 
+ */
     public void borrarCadrado(JLabel lblCadrado) {
        if(xogo.cadradosChan.size() == 10){
            xogo.borrarLinasCompletas();
            
        }
     }
-
+ /**
+ *
+ * 
+ */
     public void mostrarNumeroLinas(int numeroLinas) {
 
     }
-
+ /**
+ *
+ * 
+ */
     public void mostrarFinDoXogo() {
        
     }
-
+ /**
+ *
+ * 
+ */
     private void iniciarPartida() {
         if (!pause) {
             timer.start();
