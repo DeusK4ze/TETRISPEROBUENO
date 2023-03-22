@@ -33,6 +33,7 @@ public class Xogo {
     public void setCadradosBorrar(ArrayList<Cadrado> cadradosBorrar) {
         this.cadradosBorrar = cadradosBorrar;
     }
+
     public Xogo(VentanaPrincipal ventanaPrincipal) {
         this.ventanaPrincipal = ventanaPrincipal;
     }
@@ -98,7 +99,7 @@ public class Xogo {
         return posicionValida;
 
     }
-    
+
     /**
      *
      *
@@ -159,7 +160,8 @@ public class Xogo {
      *
      */
     public void borrarLinasCompletas() {
-        int lineaCompleta=10;
+        int lineaCompleta = 10;
+
         Iterator<Cadrado> actual = fichaActual.cadrados.iterator();
         while (actual.hasNext()) {
             Cadrado cactual = actual.next();
@@ -172,10 +174,16 @@ public class Xogo {
             }
             if (cadradosBorrar.size() == lineaCompleta) {
                 borrarLinas();
+                numeroLineas++;
+
             }
             cadradosBorrar.removeAll(cadradosBorrar);
+
+            ventanaPrincipal.mostrarNumeroLinas(numeroLineas);
+
         }
     }
+
     /**
      *
      *
@@ -202,15 +210,15 @@ public class Xogo {
 //            
 //        }
 //    }
-    
+
     public void borrarLinas() {
 
         Iterator<Cadrado> blinea = cadradosBorrar.iterator();
         while (blinea.hasNext()) {
             Cadrado este = blinea.next();
-
-            ventanaPrincipal.borrarCadrado(este.getLblCadrado());
             cadradosChan.removeAll(cadradosBorrar);
+            ventanaPrincipal.borrarCadrado(este.getLblCadrado());
+
         }
     }
 
@@ -240,13 +248,13 @@ public class Xogo {
     private boolean comprobarCadradosChan(int y, int x) {
         boolean chanComprobado = false;
         Iterator<Cadrado> iter = cadradosChan.iterator();
-        
+
         while (iter.hasNext()) {
             Cadrado item = iter.next();
             if ((item.y == (y + LADOCADRADO)) && (item.x == x)) {
-                chanComprobado = true;             
-            } 
-        }    
+                chanComprobado = true;
+            }
+        }
         return chanComprobado;
     }
 
@@ -265,10 +273,31 @@ public class Xogo {
      *
      *
      */
+    private void moverLiñasAbaixo(int y) {
+        Iterator<Cadrado> linas = cadradosChan.iterator();
+        while (linas.hasNext()) {
+            Cadrado cuadradoSuelo = linas.next();
+            int coordenadaSueloY = cuadradoSuelo.getY();
+            int novaAlturaLiña = coordenadaSueloY + LADOCADRADO;
+            if(coordenadaSueloY < y){
+                cuadradoSuelo.setY(novaAlturaLiña);
+                
+            }
+        }
+        borrarLinasCompletas();
+    }
+
+    /**
+     *
+     *
+     *
+     */
     private void actualizarGraf() {
         if (chocaFichaCoChan() && !detectarFinPartida(cadradosChan)) {
             engadirFichaAoChan();
             borrarLinasCompletas();
+            moverLiñasAbaixo(MAX_Y);
+
             xenerarNovaFicha();
         } else if (detectarFinPartida(cadradosChan)) {
             pausa = true;
@@ -286,7 +315,7 @@ public class Xogo {
             //Si algun cuadrado tiene cordenada y=0 la partida ha terminado
             if (cadradosChan.get(i).getY() <= MIN_Y) {
                 ventanaPrincipal.mostrarFinDoXogo();
-                
+
                 return true;
             }
         }

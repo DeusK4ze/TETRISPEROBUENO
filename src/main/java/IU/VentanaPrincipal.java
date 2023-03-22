@@ -48,8 +48,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
 
     });
-
+   
     Timer timerFPS = new Timer(delay, new ActionListener() {
+        
         @Override
         public void actionPerformed(ActionEvent e) {
             panelXogo.updateUI();
@@ -404,7 +405,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_bSalirKeyPressed
-
+    
     private void botonReiniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonReiniciarMouseClicked
         // TODO add your handling code here:
         panelXogo.removeAll();
@@ -418,7 +419,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void pintarCadrado(JLabel lblCadrado) {
         panelXogo.add(lblCadrado);
     }
-
+    
+    private int incrementarDificultad(){
+        if(xogo.numeroLineas%5 == 0){
+            delay -= 100;
+        }
+        return xogo.numeroLineas;
+    } 
     /**
      *
      *
@@ -432,7 +439,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      *
      */
     public void mostrarNumeroLinas(int numeroLinas) {
-
+        textFieldLineas.setText(String.valueOf(numeroLinas));
+        
     }
 
     /**
