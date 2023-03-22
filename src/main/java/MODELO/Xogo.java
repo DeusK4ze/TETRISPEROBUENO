@@ -98,43 +98,7 @@ public class Xogo {
         return posicionValida;
 
     }
-
-    /**
-     *
-     *
-     */
-//    public boolean ePosicionValida(int x, int y) {
-//        
-//    Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
-//    while (iter.hasNext()) {
-//        Cadrado cadrado = iter.next();
-//        int newX = cadrado.getX() + x;
-//        int newY = cadrado.getY() + y;
-//
-//         Comprobar si el cadrado está dentro del panel de juego
-//        if (newX < 0 || newX >= MAX_X || newY < 0 || newY >= MAX_Y) {
-//            return false;
-//        }
-//         Comprobar si el cadrado choca con otra ficha fija
-//        for (Cadrado cadrado1 : cadradosFijos) {
-//            if (cadradoFijo.getX() == newX && cadradoFijo.getY() == newY) {
-//                return false;
-//            }
-//        }
-//    }
-//    return true;
-//}
-//     public boolean ePosicionValida(int x, int y) {
-//        boolean posicionValida = false;
-//        Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
-//        while (iter.hasNext()) {
-//            Cadrado c = iter.next();
-//            if ((c.x >= 0) && (c.x <= MAX_X)) {
-//                posicionValida = true;
-//            }
-//        }
-//        return posicionValida;
-//    }
+    
     /**
      *
      *
@@ -202,9 +166,8 @@ public class Xogo {
             Iterator<Cadrado> chan = cadradosChan.iterator();
             while (chan.hasNext()) {
                 Cadrado cchan = chan.next();
-
                 if (cchan.getY() == cactual.getY()) {
-                    cadradosChan.add(cchan);
+                    cadradosBorrar.add(cchan);
                 }
             }
             if (cadradosBorrar.size() == lineaCompleta) {
@@ -305,6 +268,7 @@ public class Xogo {
     private void actualizarGraf() {
         if (chocaFichaCoChan() && !detectarFinPartida(cadradosChan)) {
             engadirFichaAoChan();
+            borrarLinasCompletas();
             xenerarNovaFicha();
         } else if (detectarFinPartida(cadradosChan)) {
             pausa = true;
