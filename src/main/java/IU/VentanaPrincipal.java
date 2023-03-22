@@ -26,7 +26,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     int delay = 1000;
     MODELO.Xogo xogo = new MODELO.Xogo(this);
     /**
-     *
+     *Inicia un timer con un delay de 1000 para el que funcionen el tiempo de juego.
      *
      */
     Timer timer = new Timer(1000, new ActionListener() {
@@ -49,6 +49,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     });
    
+    /**
+     *Empiza un timer para que funcione la lógica del juego.
+     *
+     */
+    
     Timer timerFPS = new Timer(delay, new ActionListener() {
         
         @Override
@@ -66,7 +71,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     });
 
     /**
-     *
+     *Inicializa los componentes y cuando pierdes salta un nuevo panel.
      *
      */
     public VentanaPrincipal() {
@@ -319,8 +324,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- /**
-     *
+    /**
+     *Pausa el juego y todo lo que eso conlleva
      *
      */
     private void bPausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPausarActionPerformed
@@ -347,7 +352,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_bPausarKeyPressed
     /**
-     *
+     *Sale del programa
      *
      */
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
@@ -359,7 +364,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_jTextField1ActionPerformed
-
+    /**
+     *Cuando apritas este boton el juego se inicia y ya puedes jugar
+     *
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         iniciarPartida();
         panelXogo.requestFocus();
@@ -367,7 +375,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
     /**
-     *
+     * Este método es el control de las teclas y depende de que letra toques en el teclado 
+     * las diferentes piezas realizan una acción
      *
      */
     private void panelXogoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_panelXogoKeyPressed
@@ -405,7 +414,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_bSalirKeyPressed
-    
+     /**
+     *  resetea el juego y vuelve a empezar
+     *
+     */
     private void botonReiniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonReiniciarMouseClicked
         // TODO add your handling code here:
         panelXogo.removeAll();

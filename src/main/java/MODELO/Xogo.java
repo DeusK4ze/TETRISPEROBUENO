@@ -210,7 +210,6 @@ public class Xogo {
 //            
 //        }
 //    }
-
     public void borrarLinas() {
 
         Iterator<Cadrado> blinea = cadradosBorrar.iterator();
@@ -274,14 +273,25 @@ public class Xogo {
      *
      */
     private void moverLiñasAbaixo(int y) {
-        Iterator<Cadrado> linas = cadradosChan.iterator();
-        while (linas.hasNext()) {
-            Cadrado cuadradoSuelo = linas.next();
-            int coordenadaSueloY = cuadradoSuelo.getY();
-            int novaAlturaLiña = coordenadaSueloY + LADOCADRADO;
-            if(coordenadaSueloY < y){
-                cuadradoSuelo.setY(novaAlturaLiña);
-                
+//        Iterator<Cadrado> linas = cadradosChan.iterator();
+//        while (linas.hasNext()) {
+//            Cadrado cuadradoSuelo = linas.next();
+//            int coordenadaSueloY = cuadradoSuelo.getY();
+//            int novaAlturaLiña = coordenadaSueloY + LADOCADRADO;
+//            if(coordenadaSueloY < y){
+//                cuadradoSuelo.setY(novaAlturaLiña);
+//                
+//            }
+//        }
+//        borrarLinasCompletas();
+        Iterator<Cadrado> suelolterator = cadradosChan.iterator();
+        while (suelolterator.hasNext()) {
+            Cadrado cuadradoSuelo = suelolterator.next();
+            int cuadradoSueloY = cuadradoSuelo.getY();
+            int newY = cuadradoSueloY + LADOCADRADO;
+            if (cuadradoSueloY < y) {
+                cuadradoSuelo.setY(newY);
+                cuadradoSuelo.(cuadradoSuelo.getX(), newY);
             }
         }
         borrarLinasCompletas();
@@ -296,7 +306,7 @@ public class Xogo {
         if (chocaFichaCoChan() && !detectarFinPartida(cadradosChan)) {
             engadirFichaAoChan();
             borrarLinasCompletas();
-            moverLiñasAbaixo(MAX_Y);
+            moverLiñasAbaixo();
 
             xenerarNovaFicha();
         } else if (detectarFinPartida(cadradosChan)) {
