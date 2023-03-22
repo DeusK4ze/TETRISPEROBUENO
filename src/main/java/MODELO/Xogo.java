@@ -24,7 +24,15 @@ public class Xogo {
     public Ficha fichaActual;
     public ArrayList<Cadrado> cadradosChan = new ArrayList();
     public VentanaPrincipal ventanaPrincipal;
-    
+    private ArrayList<Cadrado> cadradosBorrar = new ArrayList<>();
+
+    public ArrayList<Cadrado> getCadradosBorrar() {
+        return cadradosBorrar;
+    }
+
+    public void setCadradosBorrar(ArrayList<Cadrado> cadradosBorrar) {
+        this.cadradosBorrar = cadradosBorrar;
+    }
     public Xogo(VentanaPrincipal ventanaPrincipal) {
         this.ventanaPrincipal = ventanaPrincipal;
     }
@@ -172,7 +180,6 @@ public class Xogo {
      *
      */
     public void engadirFichaAoChan() {
-
         Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
         while (iter.hasNext()) {
             Cadrado item = iter.next();
@@ -188,38 +195,59 @@ public class Xogo {
      *
      */
     public void borrarLinasCompletas() {
-        boolean borrar = false;
-        Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
-        while(iter.hasNext()){
-            Cadrado actual = iter.next();
-            Iterator<Cadrado> iter2 = cadradosChan.iterator();
-            while(iter2.hasNext()){
-                Cadrado cadradoChan = iter2.next();
-                if(cadradoChan.getY() == actual.getY()){
+        int lineaCompleta=10;
+        Iterator<Cadrado> actual = fichaActual.cadrados.iterator();
+        while (actual.hasNext()) {
+            Cadrado cactual = actual.next();
+            Iterator<Cadrado> chan = cadradosChan.iterator();
+            while (chan.hasNext()) {
+                Cadrado cchan = chan.next();
 
+                if (cchan.getY() == cactual.getY()) {
+                    cadradosChan.add(cchan);
+                }
+            }
+            if (cadradosBorrar.size() == lineaCompleta) {
+                borrarLinas();
+            }
+            cadradosBorrar.removeAll(cadradosBorrar);
+        }
+    }
     /**
      *
      *
      *
      */
-    public void borrarLina(int y) {
-        ArrayList<Cadrado> cadradosBorrar = new ArrayList<>();
-        Iterator<Cadrado> iter = cadradosChan.iterator();
-        while(iter.hasNext()){
-            Cadrado cadradoChan = iter.next();
-            if(cadradoChan.getY() == y){
-                cadradosBorrar.add(cadradoChan);
-                System.out.println("entra if cadrados chan");
-            }
-        }
-        Iterator<Cadrado> iterBorrar = cadradosBorrar.iterator();
-        while(iterBorrar.hasNext()){
-            Cadrado cadradoBorrar= iter.next();
-            if(cadradosBorrar.size() == 10){
-                cadradosBorrar.remove(cadradoBorrar);
-                ventanaPrincipal.borrarCadrado(cadradoBorrar.lblCadrado);
-                System.out.println("entra en if borrar");
-            }
+//    public void borrarLina(int y) {
+//        ArrayList<Cadrado> cadradosBorrar = new ArrayList<>();
+//        Iterator<Cadrado> iter = cadradosChan.iterator();
+//        while(iter.hasNext()){
+//            Cadrado cadradoChan = iter.next();
+//            if(cadradoChan.getY() == y){
+//                cadradosBorrar.add(cadradoChan);
+//                System.out.println("entra if cadrados chan");
+//            }
+//        }
+//        Iterator<Cadrado> iterBorrar = cadradosBorrar.iterator();
+//        while(iterBorrar.hasNext()){
+//            Cadrado cadradoBorrar= iter.next();
+//            if(cadradosBorrar.size() == 10){
+//                cadradosBorrar.remove(cadradoBorrar);
+//                ventanaPrincipal.borrarCadrado(cadradoBorrar.lblCadrado);
+//                System.out.println("entra en if borrar");
+//            }
+//            
+//        }
+//    }
+    
+    public void borrarLinas() {
+
+        Iterator<Cadrado> blinea = cadradosBorrar.iterator();
+        while (blinea.hasNext()) {
+            Cadrado este = blinea.next();
+
+            ventanaPrincipal.borrarCadrado(este.getLblCadrado());
+            cadradosChan.removeAll(cadradosBorrar);
         }
     }
 
@@ -277,7 +305,6 @@ public class Xogo {
     private void actualizarGraf() {
         if (chocaFichaCoChan() && !detectarFinPartida(cadradosChan)) {
             engadirFichaAoChan();
-           
             xenerarNovaFicha();
         } else if (detectarFinPartida(cadradosChan)) {
             pausa = true;
@@ -294,7 +321,8 @@ public class Xogo {
         for (int i = 0; i < cadradosChan.size(); i++) {
             //Si algun cuadrado tiene cordenada y=0 la partida ha terminado
             if (cadradosChan.get(i).getY() <= MIN_Y) {
-                System.out.println("HA TERMINADO");
+                ventanaPrincipal.mostrarFinDoXogo();
+                
                 return true;
             }
         }

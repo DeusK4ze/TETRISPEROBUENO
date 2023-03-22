@@ -57,6 +57,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             if (xogo.chocaFichaCoChan()) {
                 xogo.engadirFichaAoChan();
                 xogo.xenerarNovaFicha();
+                
             } else {
                 xogo.moverFichaAbaixo();
             }
@@ -69,6 +70,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
+        panelFinal.setVisible(false);
     }
 
     /**
@@ -81,6 +83,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         panelXogo = new javax.swing.JPanel();
+        panelFinal = new javax.swing.JPanel();
+        labelPerdiches = new javax.swing.JLabel();
         panelPuntos = new javax.swing.JPanel();
         lblPuntos = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -88,6 +92,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         labelTiempo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        textFieldLineas = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         bSalir = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -116,6 +121,32 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         panelXogo.setLayout(null);
+
+        panelFinal.setFocusable(false);
+
+        labelPerdiches.setText("PERDICHES  :(((");
+        labelPerdiches.setFocusable(false);
+
+        javax.swing.GroupLayout panelFinalLayout = new javax.swing.GroupLayout(panelFinal);
+        panelFinal.setLayout(panelFinalLayout);
+        panelFinalLayout.setHorizontalGroup(
+            panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFinalLayout.createSequentialGroup()
+                .addContainerGap(148, Short.MAX_VALUE)
+                .addComponent(labelPerdiches, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(143, 143, 143))
+        );
+        panelFinalLayout.setVerticalGroup(
+            panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFinalLayout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addComponent(labelPerdiches, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(107, Short.MAX_VALUE))
+        );
+
+        panelXogo.add(panelFinal);
+        panelFinal.setBounds(70, 100, 380, 270);
+
         getContentPane().add(panelXogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 500, 800));
 
         panelPuntos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -168,34 +199,44 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        textFieldLineas.setEditable(false);
+        textFieldLineas.setFocusable(false);
+        textFieldLineas.setRequestFocusEnabled(false);
+
         javax.swing.GroupLayout panelTempoLayout = new javax.swing.GroupLayout(panelTempo);
         panelTempo.setLayout(panelTempoLayout);
         panelTempoLayout.setHorizontalGroup(
             panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTempoLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addGroup(panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel1)
-                        .addComponent(labelTiempo)))
-                .addGap(20, 20, 20))
+                    .addGroup(panelTempoLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelTiempo)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)))
+                    .addGroup(panelTempoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(textFieldLineas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         panelTempoLayout.setVerticalGroup(
             panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTempoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelTiempo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(16, 16, 16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textFieldLineas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jTextField1.getAccessibleContext().setAccessibleName("txtfieldpuntos");
 
-        getContentPane().add(panelTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, 90, 110));
+        getContentPane().add(panelTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, 90, 130));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -402,7 +443,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      *
      */
     public void mostrarFinDoXogo() {
-
+        timer.stop();
+        timerFPS.stop();
+        panelFinal.setVisible(true);
     }
 
     /**
@@ -433,6 +476,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
     }
 
+    public Timer getTimer() {
+        return timer;
+    }
+
+    public void setTimer(Timer timer) {
+        this.timer = timer;
+    }
+
+    public Timer getTimerFPS() {
+        return timerFPS;
+    }
+
+    public void setTimerFPS(Timer timerFPS) {
+        this.timerFPS = timerFPS;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bPausar;
     private javax.swing.JButton bSalir;
@@ -442,10 +501,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel labelPerdiches;
     private javax.swing.JLabel labelTiempo;
     private javax.swing.JLabel lblPuntos;
+    private javax.swing.JPanel panelFinal;
     private javax.swing.JPanel panelPuntos;
     private javax.swing.JPanel panelTempo;
     private javax.swing.JPanel panelXogo;
+    private javax.swing.JTextField textFieldLineas;
     // End of variables declaration//GEN-END:variables
 }
