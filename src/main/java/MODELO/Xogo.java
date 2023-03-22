@@ -17,13 +17,14 @@ public class Xogo {
 
     public final int LADOCADRADO = 50;
     public int MAX_X = 450;
-    public int MAX_Y = 650;
+    public int MAX_Y = 750;
+    private int MIN_Y = 0;
     public boolean pausa;
     public int numeroLineas = 0;
     public Ficha fichaActual;
     public ArrayList<Cadrado> cadradosChan = new ArrayList();
     public VentanaPrincipal ventanaPrincipal;
-
+    
     public Xogo(VentanaPrincipal ventanaPrincipal) {
         this.ventanaPrincipal = ventanaPrincipal;
     }
@@ -176,11 +177,9 @@ public class Xogo {
         while (iter.hasNext()) {
             Cadrado item = iter.next();
             cadradosChan.add(item);
-            item.setCorRecheo(Color.pink);
-            System.out.println("Suelo");
-        }
-        System.out.println("Se ha añadido AL SUELO");
+            item.lblCadrado.setBackground(Color.gray);
 
+        }
     }
 
     /**
@@ -189,16 +188,39 @@ public class Xogo {
      *
      */
     public void borrarLinasCompletas() {
-
-    }
+        boolean borrar = false;
+        Iterator<Cadrado> iter = fichaActual.cadrados.iterator();
+        while(iter.hasNext()){
+            Cadrado actual = iter.next();
+            Iterator<Cadrado> iter2 = cadradosChan.iterator();
+            while(iter2.hasNext()){
+                Cadrado cadradoChan = iter2.next();
+                if(cadradoChan.getY() == actual.getY()){
 
     /**
      *
      *
      *
      */
-    public void borrarLina() {
-
+    public void borrarLina(int y) {
+        ArrayList<Cadrado> cadradosBorrar = new ArrayList<>();
+        Iterator<Cadrado> iter = cadradosChan.iterator();
+        while(iter.hasNext()){
+            Cadrado cadradoChan = iter.next();
+            if(cadradoChan.getY() == y){
+                cadradosBorrar.add(cadradoChan);
+                System.out.println("entra if cadrados chan");
+            }
+        }
+        Iterator<Cadrado> iterBorrar = cadradosBorrar.iterator();
+        while(iterBorrar.hasNext()){
+            Cadrado cadradoBorrar= iter.next();
+            if(cadradosBorrar.size() == 10){
+                cadradosBorrar.remove(cadradoBorrar);
+                ventanaPrincipal.borrarCadrado(cadradoBorrar.lblCadrado);
+                System.out.println("entra en if borrar");
+            }
+        }
     }
 
     /**
@@ -213,7 +235,7 @@ public class Xogo {
             Cadrado item = iter.next();
             if (item.y == MAX_Y || comprobarCadradosChan(item.y, item.x)) {
                 chocaCoChan = true;
-                System.out.println("CHOCA SUELO");
+
             }
         }
         return chocaCoChan;
@@ -225,16 +247,16 @@ public class Xogo {
      *
      */
     private boolean comprobarCadradosChan(int y, int x) {
-        boolean chocaCoChan = false;
+        boolean chanComprobado = false;
         Iterator<Cadrado> iter = cadradosChan.iterator();
+        
         while (iter.hasNext()) {
             Cadrado item = iter.next();
             if ((item.y == (y + LADOCADRADO)) && (item.x == x)) {
-                chocaCoChan = true;
-                System.out.println("Choca co chan true");
-            }
-        }
-        return chocaCoChan;
+                chanComprobado = true;             
+            } 
+        }    
+        return chanComprobado;
     }
 
     /**
@@ -253,10 +275,12 @@ public class Xogo {
      *
      */
     private void actualizarGraf() {
-        if (chocaFichaCoChan()) {
+        if (chocaFichaCoChan() && !detectarFinPartida(cadradosChan)) {
             engadirFichaAoChan();
+           
             xenerarNovaFicha();
-
+        } else if (detectarFinPartida(cadradosChan)) {
+            pausa = true;
         }
     }
 
@@ -267,9 +291,9 @@ public class Xogo {
      */
     private boolean detectarFinPartida(ArrayList<Cadrado> cadradoschan) {
         //Recorre el arraylist de cadrados chan
-        for (Cadrado cadrado : cadradoschan) {
+        for (int i = 0; i < cadradosChan.size(); i++) {
             //Si algun cuadrado tiene cordenada y=0 la partida ha terminado
-            if (cadrado.getY() == 0) {
+            if (cadradosChan.get(i).getY() <= MIN_Y) {
                 System.out.println("HA TERMINADO");
                 return true;
             }

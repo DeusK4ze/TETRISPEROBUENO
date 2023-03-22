@@ -23,12 +23,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     int minutos = 0;
     int filler = 0;
     int puntuacion = 0;
-    boolean pause = false;
+    int delay = 1000;
     MODELO.Xogo xogo = new MODELO.Xogo(this);
- /**
- *
- *
- */
+    /**
+     *
+     *
+     */
     Timer timer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -45,6 +45,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
             jTextField2.setText(String.valueOf(puntuacion));
             puntuacion++;
+        }
+
+    });
+
+    Timer timerFPS = new Timer(delay, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            panelXogo.updateUI();
+
             if (xogo.chocaFichaCoChan()) {
                 xogo.engadirFichaAoChan();
                 xogo.xenerarNovaFicha();
@@ -53,12 +62,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         }
     });
- /**
- *
- * 
- */
+
+    /**
+     *
+     *
+     */
     public VentanaPrincipal() {
-        initComponents();   
+        initComponents();
     }
 
     /**
@@ -82,6 +92,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         bSalir = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         bPausar = new javax.swing.JButton();
+        botonReiniciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -95,7 +106,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelXogo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.white, java.awt.Color.darkGray, java.awt.Color.lightGray));
         panelXogo.setMaximumSize(new java.awt.Dimension(500, 700));
         panelXogo.setMinimumSize(new java.awt.Dimension(500, 700));
-        panelXogo.setPreferredSize(new java.awt.Dimension(500, 700));
+        panelXogo.setPreferredSize(new java.awt.Dimension(500, 800));
         panelXogo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 panelXogoKeyPressed(evt);
@@ -105,7 +116,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         panelXogo.setLayout(null);
-        getContentPane().add(panelXogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 500, 700));
+        getContentPane().add(panelXogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 500, 800));
 
         panelPuntos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelPuntos.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -175,7 +186,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(panelTempoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelTiempo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
@@ -228,18 +239,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botonReiniciar.setText("REINICIAR");
+        botonReiniciar.setFocusable(false);
+        botonReiniciar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonReiniciarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bPausar)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(bSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addGap(56, 56, 56)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonReiniciar)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(bPausar)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,7 +271,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(bSalir)
                 .addGap(31, 31, 31)
                 .addComponent(jButton1)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(botonReiniciar)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, -1, 250));
@@ -258,17 +281,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
  /**
- *
- * 
- */
+     *
+     *
+     */
     private void bPausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPausarActionPerformed
         // TODO add your handling code here:
-        if (!pause) {
+        if (!xogo.pausa) {
             timer.stop();
-            pause = true;
+            timerFPS.stop();
+            xogo.pausa = true;
+
         } else {
             timer.start();
-            pause = false;
+            timerFPS.start();
+            xogo.pausa = false;
+
         }
     }//GEN-LAST:event_bPausarActionPerformed
 
@@ -278,12 +305,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void bPausarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bPausarKeyPressed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_bPausarKeyPressed
- /**
- *
- * 
- */
+    /**
+     *
+     *
+     */
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
         // TODO add your handling code here:
         System.exit(0);
@@ -297,87 +324,97 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         iniciarPartida();
         panelXogo.requestFocus();
-        
-       
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
- /**
- *
- * 
- */
+    /**
+     *
+     *
+     */
     private void panelXogoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_panelXogoKeyPressed
         // TODO add your handling code here:
         panelXogo.setFocusable(true);
-         panelXogo.requestFocus();
-        try {
-            switch (evt.getKeyCode()) {
-                case KeyEvent.VK_A -> {
-                    xogo.moverFichaEsquerda();
+        panelXogo.requestFocus();
+        if (!xogo.pausa) {
+            try {
+                switch (evt.getKeyCode()) {
+                    case KeyEvent.VK_A -> {
+                        xogo.moverFichaEsquerda();
+                    }
+                    case KeyEvent.VK_D -> {
+                        xogo.moverFichaDereita();
+                    }
+                    case KeyEvent.VK_S -> {
+                        xogo.moverFichaAbaixo();
+                    }
+                    case KeyEvent.VK_W -> {
+                        xogo.rotarFicha();
+                    }
+                    default -> {
+                    }
                 }
-                case KeyEvent.VK_D -> {
-                    xogo.moverFichaDereita();
-                }
-                case KeyEvent.VK_S -> {
-                    xogo.moverFichaAbaixo();
-                }
-                case KeyEvent.VK_W -> {
-                    xogo.rotarFicha();
-                }
-                default -> {
-                }
+            } catch (NullPointerException e) {
             }
-        } catch (NullPointerException e) {
-          
         }
     }//GEN-LAST:event_panelXogoKeyPressed
 
     private void panelXogoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_panelXogoKeyTyped
-       
+
     }//GEN-LAST:event_panelXogoKeyTyped
 
     private void bSalirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bSalirKeyPressed
 
-        
+
     }//GEN-LAST:event_bSalirKeyPressed
- /**
- *
- * 
- */
+
+    private void botonReiniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonReiniciarMouseClicked
+        // TODO add your handling code here:
+        panelXogo.removeAll();
+        iniciarPartida();
+        
+    }//GEN-LAST:event_botonReiniciarMouseClicked
+    /**
+     *
+     *
+     */
     public void pintarCadrado(JLabel lblCadrado) {
         panelXogo.add(lblCadrado);
     }
- /**
- *
- * 
- */
+
+    /**
+     *
+     *
+     */
     public void borrarCadrado(JLabel lblCadrado) {
-       if(xogo.cadradosChan.size() == 10){
-           xogo.borrarLinasCompletas();
-           
-       }
+        panelXogo.remove(lblCadrado);
     }
- /**
- *
- * 
- */
+
+    /**
+     *
+     *
+     */
     public void mostrarNumeroLinas(int numeroLinas) {
 
     }
- /**
- *
- * 
- */
+
+    /**
+     *
+     *
+     */
     public void mostrarFinDoXogo() {
-       
+
     }
- /**
- *
- * 
- */
+
+    /**
+     *
+     *
+     */
     private void iniciarPartida() {
-        if (!pause) {
+        if (!xogo.pausa) {
             timer.start();
+            timerFPS.start();
             xogo.xenerarNovaFicha();
-        } 
+        }
 
     }
 
@@ -399,6 +436,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bPausar;
     private javax.swing.JButton bSalir;
+    private javax.swing.JButton botonReiniciar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
